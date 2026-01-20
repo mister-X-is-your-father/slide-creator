@@ -17,6 +17,7 @@ slide-creator/
 ├── 4_marp_ai_image/           # AI画像生成連携
 ├── 5_html_direct/             # HTML直接生成
 ├── 6_pptx_direct/             # .pptx直接生成
+├── 7_googleslides/            # Google Slides API連携
 └── REQUIREMENTS.md            # 本ドキュメント
 ```
 
@@ -213,6 +214,45 @@ slides.md → YAML変換 → HTML生成 → PDF出力
 
 ---
 
+### 7_googleslides（Google Slides API連携）
+
+**概要**: Google Slides APIを使用してMarkdownからGoogleスライドを直接生成
+
+**特徴**:
+- Googleドライブで共有・共同編集可能
+- Web上で編集可能
+- Google Workspaceとの連携
+
+**構成**:
+```
+7_googleslides/
+├── 1_input/
+├── 2_slides/
+├── 3_output/
+├── scripts/
+│   └── md_to_gslides.py
+├── credentials/          # .gitignore
+└── CLAUDE.md
+```
+
+**セットアップ**:
+1. Google Cloud プロジェクト作成
+2. Slides API / Drive API 有効化
+3. OAuth認証情報をダウンロード
+4. `pip install google-api-python-client google-auth-oauthlib`
+
+**コマンド**:
+```bash
+python scripts/md_to_gslides.py 1_input/slides.md "タイトル"
+```
+
+**制限**:
+- 初回はGoogle認証が必要
+- 複雑なレイアウトは非対応
+- API利用制限あり
+
+---
+
 ## 共通ルール
 
 ### スライド構成ルール
@@ -257,6 +297,7 @@ slides.md → YAML変換 → HTML生成 → PDF出力
 | Puppeteer | HTML→PDF変換 | 5 |
 | Gemini API | 画像生成 | 4 |
 | Claude Max/Team | .pptx生成 | 6 |
+| Google Slides API | Googleスライド生成 | 7 |
 
 ---
 
