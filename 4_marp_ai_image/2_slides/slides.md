@@ -3,6 +3,10 @@ marp: true
 theme: default
 paginate: true
 footer: 'システムアーキテクチャ解説'
+style: |
+  section {
+    font-family: 'Noto Sans CJK JP', 'Noto Sans JP', sans-serif;
+  }
 ---
 
 # システムアーキテクチャ解説

@@ -3,6 +3,10 @@ marp: true
 theme: default
 paginate: true
 footer: 'Subagentsによる自動化'
+style: |
+  section {
+    font-family: 'Noto Sans CJK JP', 'Noto Sans JP', sans-serif;
+  }
 ---
 
 # Subagentsによる自動化

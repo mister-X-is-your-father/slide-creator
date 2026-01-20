@@ -16,7 +16,7 @@ style: |
   section {
     background-color: var(--background);
     color: var(--text);
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Noto Sans CJK JP', 'Noto Sans JP', sans-serif;
   }
   h1 {
     color: var(--primary);

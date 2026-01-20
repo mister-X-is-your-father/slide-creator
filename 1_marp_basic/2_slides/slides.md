@@ -4,6 +4,10 @@ theme: default
 paginate: true
 header: ''
 footer: 'Claude Code スライド自動生成'
+style: |
+  section {
+    font-family: 'Noto Sans CJK JP', 'Noto Sans JP', sans-serif;
+  }
 ---
 
 # Claude Codeでスライド自動生成
