@@ -24,7 +24,7 @@ style: |
 
   section {
     background: var(--cream);
-    font-family: "Zen Maru Gothic", "Hachi Maru Pop", sans-serif;
+    font-family: "Zen Maru Gothic", "Hachi Maru Pop", "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
     color: var(--brown);
     padding: 40px 60px;
     font-size: 26px;
@@ -32,6 +32,11 @@ style: |
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  /* 絵文字用 */
+  .illust, .illust-small, .dialogue-char {
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
   }
 
   /* 絵本タイトル */
