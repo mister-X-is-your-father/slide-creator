@@ -2,10 +2,17 @@
 marp: true
 theme: default
 paginate: false
+size: 16:9
 style: |
   /* ================================ */
   /* コミュ力シリーズ - ポップテーマ  */
+  /* Episode 03: 質問力              */
   /* ================================ */
+  /* レイアウト計算
+   * 画面: 1280x720px (16:9)
+   * パディング: 30px
+   * 使用可能: 1220x660px
+   */
 
   :root {
     --bg: #FFF5F5;
@@ -23,36 +30,39 @@ style: |
     background: var(--bg);
     font-family: "Hiragino Maru Gothic Pro", "Noto Sans JP", sans-serif;
     color: var(--text);
-    padding: 35px 45px;
+    padding: 30px 40px;
+    font-size: 18px;
+    line-height: 1.5;
   }
 
-  h1 { color: var(--primary); font-size: 1.9em; }
-  h2 { color: var(--text); font-size: 1.4em; }
+  h1 { color: var(--primary); font-size: 1.7em; margin: 0 0 10px; }
+  h2 { color: var(--text); font-size: 1.25em; margin: 0 0 10px; }
 
   /* キャラクター */
   .chara {
     display: flex;
     align-items: flex-start;
-    gap: 15px;
-    margin: 12px 0;
+    gap: 10px;
+    margin: 8px 0;
   }
   .chara.right { flex-direction: row-reverse; }
-  .chara-icon { font-size: 2.8em; flex-shrink: 0; }
+  .chara-icon { font-size: 2.2em; flex-shrink: 0; }
   .chara-bubble {
     background: var(--white);
-    border-radius: 20px;
-    padding: 15px 20px;
-    max-width: 80%;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    border-radius: 15px;
+    padding: 10px 14px;
+    max-width: 85%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     position: relative;
-    line-height: 1.7;
+    line-height: 1.5;
+    font-size: 0.95em;
   }
   .chara.right .chara-bubble { background: var(--secondary); color: white; }
   .chara-name {
     font-size: 0.7em;
     font-weight: 700;
     color: var(--primary);
-    margin-bottom: 5px;
+    margin-bottom: 3px;
   }
   .chara.right .chara-name { color: var(--white); opacity: 0.9; }
   .chara-bubble strong { color: var(--primary); }
@@ -61,83 +71,93 @@ style: |
   /* タイトル */
   .title-pop {
     text-align: center;
-    padding-top: 50px;
+    padding-top: 40px;
   }
   .title-pop .episode {
     background: var(--primary);
     color: white;
-    padding: 5px 20px;
-    border-radius: 20px;
-    font-size: 0.9em;
+    padding: 4px 16px;
+    border-radius: 15px;
+    font-size: 0.85em;
     display: inline-block;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
   .title-pop h1 {
-    font-size: 2.5em;
+    font-size: 2.2em;
     margin: 0;
     color: var(--text);
   }
   .title-pop .subtitle {
     color: var(--text-light);
-    margin-top: 15px;
-    font-size: 1.1em;
+    margin-top: 10px;
+    font-size: 1em;
   }
   .title-pop .skill-tag {
     background: var(--accent);
     color: var(--text);
-    padding: 8px 25px;
-    border-radius: 25px;
+    padding: 6px 20px;
+    border-radius: 20px;
     font-weight: 700;
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 15px;
+    font-size: 0.95em;
   }
 
   /* シーン説明 */
   .scene-box {
     background: linear-gradient(135deg, var(--primary) 0%, #C44BD9 100%);
     color: white;
-    border-radius: 15px;
-    padding: 20px;
+    border-radius: 12px;
+    padding: 12px 20px;
     text-align: center;
-    margin: 20px 0;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
   }
-  .scene-box .scene-icon { font-size: 2em; margin-bottom: 10px; }
-  .scene-box .scene-title { font-weight: 700; font-size: 1.1em; }
+  .scene-box .scene-icon { font-size: 1.5em; }
+  .scene-box .scene-title { font-weight: 700; font-size: 1em; }
 
   /* ポイントボックス */
   .point-box {
     background: var(--white);
-    border-radius: 15px;
-    padding: 20px;
-    border-left: 5px solid var(--secondary);
-    margin: 15px 0;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+    border-radius: 12px;
+    padding: 12px 15px;
+    border-left: 4px solid var(--secondary);
+    margin: 10px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   }
+  .point-box ul { margin: 5px 0; padding-left: 20px; }
+  .point-box li { margin: 3px 0; }
   .point-title {
     color: var(--secondary);
     font-weight: 700;
-    font-size: 1.1em;
-    margin-bottom: 10px;
+    font-size: 1em;
+    margin-bottom: 8px;
   }
 
   /* NGとOK */
   .ng-ok {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin: 15px 0;
+    gap: 12px;
+    margin: 10px 0;
   }
   .ng-box, .ok-box {
-    border-radius: 15px;
-    padding: 15px;
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-size: 0.9em;
   }
   .ng-box { background: #FFE5E5; border: 2px solid var(--coral); }
   .ok-box { background: #E5FFF4; border: 2px solid var(--mint); }
+  .ng-box ul, .ok-box ul { margin: 5px 0; padding-left: 18px; }
+  .ng-box li, .ok-box li { margin: 2px 0; }
   .ng-label, .ok-label {
     font-weight: 700;
     text-align: center;
-    margin-bottom: 10px;
-    font-size: 1.1em;
+    margin-bottom: 6px;
+    font-size: 1em;
   }
   .ng-label { color: var(--coral); }
   .ok-label { color: #00A67E; }
@@ -145,93 +165,95 @@ style: |
   /* まとめ */
   .summary-pop {
     background: linear-gradient(135deg, var(--secondary) 0%, #5758BB 100%);
-    border-radius: 20px;
-    padding: 25px;
+    border-radius: 15px;
+    padding: 18px;
     text-align: center;
     color: white;
   }
-  .summary-pop h2 { color: white; margin: 0 0 15px; }
+  .summary-pop h2 { color: white; margin: 0 0 10px; font-size: 1.2em; }
   .summary-key {
     background: rgba(255,255,255,0.2);
-    border-radius: 10px;
-    padding: 15px;
-    font-size: 1.3em;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1.15em;
     font-weight: 700;
   }
 
   /* 次回予告 */
   .next-episode {
     background: var(--white);
-    border: 3px dashed var(--primary);
-    border-radius: 15px;
-    padding: 20px;
+    border: 2px dashed var(--primary);
+    border-radius: 12px;
+    padding: 12px 15px;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 12px;
   }
   .next-episode .next-label {
     color: var(--primary);
-    font-size: 0.85em;
+    font-size: 0.8em;
     font-weight: 700;
   }
   .next-episode .next-title {
-    font-size: 1.2em;
+    font-size: 1.05em;
     font-weight: 700;
-    margin-top: 8px;
+    margin-top: 5px;
     color: var(--text);
   }
 
   /* ヒント */
   .hint-pop {
     background: var(--accent);
-    border-radius: 12px;
-    padding: 15px;
+    border-radius: 10px;
+    padding: 10px 14px;
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin: 15px 0;
+    gap: 10px;
+    margin: 10px 0;
+    font-size: 0.95em;
   }
-  .hint-icon { font-size: 1.8em; }
+  .hint-icon { font-size: 1.5em; }
 
   /* 思考プロセス */
   .think-process {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin: 15px 0;
+    gap: 8px;
+    margin: 10px 0;
     flex-wrap: wrap;
   }
   .think-step {
     background: var(--white);
-    border-radius: 10px;
-    padding: 10px 15px;
+    border-radius: 8px;
+    padding: 8px 12px;
     border: 2px solid var(--secondary);
-    font-size: 0.9em;
+    font-size: 0.85em;
   }
   .think-arrow {
     color: var(--secondary);
-    font-size: 1.3em;
+    font-size: 1.1em;
   }
 
   /* 質問タイプ */
   .question-types {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin: 15px 0;
+    gap: 12px;
+    margin: 10px 0;
   }
   .q-type {
     background: var(--white);
-    border-radius: 15px;
-    padding: 15px;
+    border-radius: 12px;
+    padding: 10px 12px;
     border: 2px solid var(--primary);
+    font-size: 0.9em;
   }
   .q-type-title {
     font-weight: 700;
     color: var(--primary);
-    margin-bottom: 8px;
+    margin-bottom: 5px;
   }
   .q-type-example {
-    font-size: 0.9em;
+    font-size: 0.85em;
     color: var(--text-light);
     font-style: italic;
   }
@@ -239,28 +261,30 @@ style: |
   /* ステップ */
   .steps-pop {
     display: flex;
-    gap: 15px;
-    margin: 15px 0;
+    gap: 12px;
+    margin: 10px 0;
   }
   .step-item {
     flex: 1;
     background: var(--white);
-    border-radius: 15px;
-    padding: 15px;
+    border-radius: 12px;
+    padding: 12px 10px;
     text-align: center;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    font-size: 0.9em;
   }
   .step-num {
     background: var(--primary);
     color: white;
-    width: 35px;
-    height: 35px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 10px;
+    margin: 0 auto 8px;
     font-weight: 700;
+    font-size: 0.9em;
   }
   .step-item:nth-child(2) .step-num { background: var(--secondary); }
   .step-item:nth-child(3) .step-num { background: var(--mint); }
@@ -272,7 +296,6 @@ style: |
 <span class="episode">コミュ力アップ講座 #03</span>
 
 # ❓ 質問されると固まる問題
-
 <div class="subtitle">〜 で、結局どうしたいの？ 〜</div>
 <span class="skill-tag">💡 今日の学び：質問力</span>
 </div>
@@ -334,8 +357,7 @@ style: |
 <span class="chara-icon">🧑‍💻</span>
 <div class="chara-bubble">
 <div class="chara-name">後輩（鈴木）</div>
-課題...ですか...<br>
-<strong>うーん...特に思いつかないです...</strong>
+課題...ですか... <strong>うーん...特に思いつかないです...</strong>
 </div>
 </div>
 
@@ -351,7 +373,7 @@ style: |
 <span class="chara-icon">🧑‍💻</span>
 <div class="chara-bubble">
 <div class="chara-name">後輩（鈴木）</div>
-...必要なこと...<span style="color: #999;">（頭が真っ白...）</span>
+...必要なこと... <span style="color: #999;">（頭が真っ白...）</span>
 </div>
 </div>
 
@@ -437,8 +459,7 @@ style: |
 <span class="chara-icon">🧑‍💻</span>
 <div class="chara-bubble">
 <div class="chara-name">後輩（鈴木）</div>
-<strong>コスト面で見ると</strong>、少し気になる点があります。<br>
-広告費が想定より高めに見えるんですが、<strong>これはテスト期間を含めた数字ですか？</strong>
+<strong>コスト面で見ると</strong>、少し気になる点があります。広告費が想定より高めに見えるんですが、<strong>これはテスト期間を含めた数字ですか？</strong>
 </div>
 </div>
 
@@ -446,8 +467,7 @@ style: |
 <span class="chara-icon">👨‍💼</span>
 <div class="chara-bubble">
 <div class="chara-name">先輩（田中）</div>
-お、いい視点だね！<br>
-実はそこまだ詰められてなくて...<strong>一緒に考えてくれる？</strong>
+お、いい視点だね！実はそこまだ詰められてなくて...<strong>一緒に考えてくれる？</strong>
 </div>
 </div>
 
@@ -518,15 +538,11 @@ Yes/Noで答える質問<br>
 <div class="summary-pop">
 
 ## ❓ 今日の学び：質問力
-
 <div class="summary-key">
-「正解」より「意見」を言う<br>
-観点 → 評価 → 理由 の型で話す
+「正解」より「意見」を言う ― 観点 → 評価 → 理由 の型で話す
 </div>
 
 </div>
-
-<br>
 
 <div class="steps-pop">
 <div class="step-item">
@@ -550,18 +566,17 @@ Yes/Noで答える質問<br>
 
 <!-- 次回予告 -->
 
-<div class="title-pop" style="padding-top: 30px;">
+<div class="title-pop" style="padding-top: 20px;">
 
 ## 🎬 To Be Continued...
-
 </div>
 
 <div class="next-episode">
 <div class="next-label">📺 次回予告</div>
-<div class="next-title">「そういうことじゃないんだけど...」<br>〜 相手の気持ちが分からない問題 〜</div>
+<div class="next-title">「そういうことじゃないんだけど...」〜 相手の気持ちが分からない問題 〜</div>
 </div>
 
-<div class="chara" style="margin-top: 20px;">
+<div class="chara" style="margin-top: 10px;">
 <span class="chara-icon">😢</span>
 <div class="chara-bubble">
 <div class="chara-name">同僚（山田）</div>

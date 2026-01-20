@@ -2,10 +2,17 @@
 marp: true
 theme: default
 paginate: false
+size: 16:9
 style: |
   /* ================================ */
   /* コミュ力シリーズ - ポップテーマ  */
+  /* Episode 05: フィードバック力    */
   /* ================================ */
+  /* レイアウト計算
+   * 画面: 1280x720px (16:9)
+   * パディング: 30px
+   * 使用可能: 1220x660px
+   */
 
   :root {
     --bg: #F0FFF4;
@@ -23,36 +30,39 @@ style: |
     background: var(--bg);
     font-family: "Hiragino Maru Gothic Pro", "Noto Sans JP", sans-serif;
     color: var(--text);
-    padding: 35px 45px;
+    padding: 30px 40px;
+    font-size: 18px;
+    line-height: 1.5;
   }
 
-  h1 { color: var(--primary); font-size: 1.9em; }
-  h2 { color: var(--text); font-size: 1.4em; }
+  h1 { color: var(--primary); font-size: 1.7em; margin: 0 0 10px; }
+  h2 { color: var(--text); font-size: 1.25em; margin: 0 0 10px; }
 
   /* キャラクター */
   .chara {
     display: flex;
     align-items: flex-start;
-    gap: 15px;
-    margin: 12px 0;
+    gap: 10px;
+    margin: 8px 0;
   }
   .chara.right { flex-direction: row-reverse; }
-  .chara-icon { font-size: 2.8em; flex-shrink: 0; }
+  .chara-icon { font-size: 2.2em; flex-shrink: 0; }
   .chara-bubble {
     background: var(--white);
-    border-radius: 20px;
-    padding: 15px 20px;
-    max-width: 80%;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    border-radius: 15px;
+    padding: 10px 14px;
+    max-width: 85%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     position: relative;
-    line-height: 1.7;
+    line-height: 1.5;
+    font-size: 0.95em;
   }
   .chara.right .chara-bubble { background: var(--primary); color: white; }
   .chara-name {
     font-size: 0.7em;
     font-weight: 700;
     color: var(--primary);
-    margin-bottom: 5px;
+    margin-bottom: 3px;
   }
   .chara.right .chara-name { color: var(--white); opacity: 0.9; }
   .chara-bubble strong { color: var(--coral); }
@@ -61,83 +71,92 @@ style: |
   /* タイトル */
   .title-pop {
     text-align: center;
-    padding-top: 50px;
+    padding-top: 40px;
   }
   .title-pop .episode {
     background: var(--primary);
     color: white;
-    padding: 5px 20px;
-    border-radius: 20px;
-    font-size: 0.9em;
+    padding: 4px 16px;
+    border-radius: 15px;
+    font-size: 0.85em;
     display: inline-block;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
   .title-pop h1 {
-    font-size: 2.3em;
+    font-size: 2.1em;
     margin: 0;
     color: var(--text);
   }
   .title-pop .subtitle {
     color: var(--text-light);
-    margin-top: 15px;
-    font-size: 1.1em;
+    margin-top: 10px;
+    font-size: 1em;
   }
   .title-pop .skill-tag {
     background: var(--accent);
     color: var(--text);
-    padding: 8px 25px;
-    border-radius: 25px;
+    padding: 6px 20px;
+    border-radius: 20px;
     font-weight: 700;
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 15px;
+    font-size: 0.95em;
   }
 
   /* シーン説明 */
   .scene-box {
     background: linear-gradient(135deg, var(--primary) 0%, #00A085 100%);
     color: white;
-    border-radius: 15px;
-    padding: 20px;
+    border-radius: 12px;
+    padding: 12px 20px;
     text-align: center;
-    margin: 20px 0;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
   }
-  .scene-box .scene-icon { font-size: 2em; margin-bottom: 10px; }
-  .scene-box .scene-title { font-weight: 700; font-size: 1.1em; }
+  .scene-box .scene-icon { font-size: 1.5em; }
+  .scene-box .scene-title { font-weight: 700; font-size: 1em; }
 
   /* ポイントボックス */
   .point-box {
     background: var(--white);
-    border-radius: 15px;
-    padding: 20px;
-    border-left: 5px solid var(--secondary);
-    margin: 15px 0;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+    border-radius: 12px;
+    padding: 12px 15px;
+    border-left: 4px solid var(--secondary);
+    margin: 10px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    font-size: 0.95em;
   }
   .point-title {
     color: var(--secondary);
     font-weight: 700;
-    font-size: 1.1em;
-    margin-bottom: 10px;
+    font-size: 1em;
+    margin-bottom: 8px;
   }
 
   /* NGとOK */
   .ng-ok {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin: 15px 0;
+    gap: 12px;
+    margin: 10px 0;
   }
   .ng-box, .ok-box {
-    border-radius: 15px;
-    padding: 15px;
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-size: 0.9em;
   }
   .ng-box { background: #FFE5E5; border: 2px solid var(--coral); }
   .ok-box { background: #E0FFF4; border: 2px solid var(--primary); }
+  .ng-box ul, .ok-box ul { margin: 5px 0; padding-left: 18px; }
+  .ng-box li, .ok-box li { margin: 2px 0; }
   .ng-label, .ok-label {
     font-weight: 700;
     text-align: center;
-    margin-bottom: 10px;
-    font-size: 1.1em;
+    margin-bottom: 6px;
+    font-size: 1em;
   }
   .ng-label { color: var(--coral); }
   .ok-label { color: var(--primary); }
@@ -145,115 +164,118 @@ style: |
   /* まとめ */
   .summary-pop {
     background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-    border-radius: 20px;
-    padding: 25px;
+    border-radius: 15px;
+    padding: 18px;
     text-align: center;
     color: white;
   }
-  .summary-pop h2 { color: white; margin: 0 0 15px; }
+  .summary-pop h2 { color: white; margin: 0 0 10px; font-size: 1.2em; }
   .summary-key {
     background: rgba(255,255,255,0.2);
-    border-radius: 10px;
-    padding: 15px;
-    font-size: 1.3em;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1.15em;
     font-weight: 700;
   }
 
   /* 完結 */
   .finale {
     background: var(--white);
-    border: 3px solid var(--accent);
-    border-radius: 15px;
-    padding: 20px;
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    padding: 12px 15px;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 12px;
   }
   .finale .finale-label {
     color: var(--primary);
-    font-size: 0.85em;
+    font-size: 0.8em;
     font-weight: 700;
   }
   .finale .finale-title {
-    font-size: 1.2em;
+    font-size: 1.05em;
     font-weight: 700;
-    margin-top: 8px;
+    margin-top: 5px;
     color: var(--text);
   }
 
   /* ヒント */
   .hint-pop {
     background: var(--accent);
-    border-radius: 12px;
-    padding: 15px;
+    border-radius: 10px;
+    padding: 10px 14px;
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin: 15px 0;
+    gap: 10px;
+    margin: 10px 0;
+    font-size: 0.95em;
   }
-  .hint-icon { font-size: 1.8em; }
+  .hint-icon { font-size: 1.5em; }
 
   /* フレームワーク */
   .framework-box {
     background: var(--white);
-    border-radius: 15px;
-    padding: 20px;
-    border: 3px solid var(--primary);
-    margin: 15px 0;
+    border-radius: 12px;
+    padding: 12px 15px;
+    border: 2px solid var(--primary);
+    margin: 10px 0;
   }
   .framework-title {
     text-align: center;
-    font-size: 1.3em;
+    font-size: 1.15em;
     font-weight: 700;
     color: var(--primary);
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
   .framework-steps {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    gap: 8px;
   }
   .framework-step {
     text-align: center;
-    padding: 10px;
+    padding: 8px;
     background: var(--bg);
-    border-radius: 10px;
+    border-radius: 8px;
   }
   .framework-step .step-letter {
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: 900;
     color: var(--primary);
   }
   .framework-step .step-ja {
-    font-size: 0.85em;
+    font-size: 0.8em;
     font-weight: 600;
-    margin-top: 5px;
+    margin-top: 3px;
   }
 
   /* ステップ */
   .steps-pop {
     display: flex;
-    gap: 15px;
-    margin: 15px 0;
+    gap: 12px;
+    margin: 10px 0;
   }
   .step-item {
     flex: 1;
     background: var(--white);
-    border-radius: 15px;
-    padding: 15px;
+    border-radius: 12px;
+    padding: 12px 10px;
     text-align: center;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    font-size: 0.9em;
   }
   .step-num {
     background: var(--primary);
     color: white;
-    width: 35px;
-    height: 35px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 10px;
+    margin: 0 auto 8px;
     font-weight: 700;
+    font-size: 0.9em;
   }
   .step-item:nth-child(2) .step-num { background: var(--secondary); }
   .step-item:nth-child(3) .step-num { background: var(--purple); }
@@ -262,26 +284,26 @@ style: |
   .skills-recap {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    margin: 15px 0;
+    gap: 8px;
+    margin: 10px 0;
   }
   .skill-item {
     background: var(--white);
-    border-radius: 12px;
-    padding: 15px 10px;
+    border-radius: 10px;
+    padding: 10px 8px;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   }
   .skill-item .skill-num {
-    font-size: 0.75em;
+    font-size: 0.7em;
     color: var(--text-light);
   }
   .skill-item .skill-icon {
-    font-size: 1.8em;
-    margin: 8px 0;
+    font-size: 1.5em;
+    margin: 5px 0;
   }
   .skill-item .skill-name {
-    font-size: 0.85em;
+    font-size: 0.8em;
     font-weight: 600;
   }
 
@@ -292,7 +314,6 @@ style: |
 <span class="episode">コミュ力アップ講座 #05（最終回）</span>
 
 # 🗣️ なんでできないの？
-
 <div class="subtitle">〜 言い方ひとつで関係が壊れる問題 〜</div>
 <span class="skill-tag">💡 今日の学び：フィードバック力</span>
 </div>
@@ -326,8 +347,7 @@ style: |
 <span class="chara-icon">👨‍💼</span>
 <div class="chara-bubble">
 <div class="chara-name">先輩（田中）</div>
-<strong>なんで同じミスするの？</strong><br>
-ちゃんと確認してる？
+<strong>なんで同じミスするの？</strong> ちゃんと確認してる？
 </div>
 </div>
 
@@ -335,8 +355,7 @@ style: |
 <span class="chara-icon">😰</span>
 <div class="chara-bubble">
 <div class="chara-name">後輩（鈴木）</div>
-確認は...してたつもりなんですけど...<br>
-<span style="color: #999;">（もう何も言えない...）</span>
+確認は...してたつもりなんですけど... <span style="color: #999;">（もう何も言えない...）</span>
 </div>
 </div>
 
@@ -348,8 +367,7 @@ style: |
 <span class="chara-icon">👨‍💼</span>
 <div class="chara-bubble">
 <div class="chara-name">先輩（田中）</div>
-「つもり」じゃダメなんだよ。<br>
-<strong>もっとちゃんとやって。</strong>
+「つもり」じゃダメなんだよ。 <strong>もっとちゃんとやって。</strong>
 </div>
 </div>
 
@@ -357,12 +375,9 @@ style: |
 <span class="chara-icon">😢</span>
 <div class="chara-bubble">
 <div class="chara-name">後輩（鈴木）</div>
-はい...すみません...<br>
-<span style="color: #999;">（田中さん、最近怖い...もう相談したくないな...）</span>
+はい...すみません... <span style="color: #999;">（田中さん、最近怖い...もう相談したくないな...）</span>
 </div>
 </div>
-
-<br>
 
 <div class="hint-pop">
 <span class="hint-icon">😱</span>
@@ -452,8 +467,7 @@ style: |
 <span class="chara-icon">👨‍💼</span>
 <div class="chara-bubble">
 <div class="chara-name">先輩（田中）</div>
-鈴木くん、ちょっといい？<br>
-<strong>この資料の数字、元データと違ってるみたいなんだけど...</strong>
+鈴木くん、ちょっといい？ <strong>この資料の数字、元データと違ってるみたいなんだけど...</strong>
 </div>
 </div>
 
@@ -469,8 +483,7 @@ style: |
 <span class="chara-icon">👨‍💼</span>
 <div class="chara-bubble">
 <div class="chara-name">先輩（田中）</div>
-似たようなミスが前にもあったから、<br>
-<strong>何か確認しにくい原因があるのかなと思って。</strong>
+似たようなミスが前にもあったから、<strong>何か確認しにくい原因があるのかなと思って。</strong>
 </div>
 </div>
 
@@ -482,8 +495,7 @@ style: |
 <span class="chara-icon">🧑‍💻</span>
 <div class="chara-bubble">
 <div class="chara-name">後輩（鈴木）</div>
-実は...データの転記作業が複雑で、<br>
-<strong>どこをチェックすればいいか迷うことがあって...</strong>
+実は...データの転記作業が複雑で、<strong>どこをチェックすればいいか迷うことがあって...</strong>
 </div>
 </div>
 
@@ -491,8 +503,7 @@ style: |
 <span class="chara-icon">👨‍💼</span>
 <div class="chara-bubble">
 <div class="chara-name">先輩（田中）</div>
-なるほど。じゃあ<strong>チェックリストを一緒に作ってみない？</strong><br>
-それで確認漏れを防げるかも。
+なるほど。じゃあ<strong>チェックリストを一緒に作ってみない？</strong> それで確認漏れを防げるかも。
 </div>
 </div>
 
@@ -500,8 +511,7 @@ style: |
 <span class="chara-icon">😊</span>
 <div class="chara-bubble">
 <div class="chara-name">後輩（鈴木）</div>
-ぜひお願いします！<br>
-<strong>ありがとうございます！</strong>
+ぜひお願いします！ <strong>ありがとうございます！</strong>
 </div>
 </div>
 
@@ -577,15 +587,11 @@ style: |
 <div class="summary-pop">
 
 ## 🗣️ 今日の学び：フィードバック力
-
 <div class="summary-key">
-「人」を責めず「事実」を伝える<br>
-DESC法で建設的なフィードバックを
+「人」を責めず「事実」を伝える ― DESC法で建設的なフィードバックを
 </div>
 
 </div>
-
-<br>
 
 <div class="steps-pop">
 <div class="step-item">
@@ -651,18 +657,17 @@ DESC法で建設的なフィードバックを
 
 <!-- フィナーレ -->
 
-<div class="title-pop" style="padding-top: 20px;">
+<div class="title-pop" style="padding-top: 15px;">
 
 ## 🎬 Fin.
-
 </div>
 
 <div class="finale">
 <div class="finale-label">📚 全5回シリーズ 完結</div>
-<div class="finale-title">田中さんと鈴木くんは、<br>最高のチームになりましたとさ。めでたしめでたし。</div>
+<div class="finale-title">田中さんと鈴木くんは、最高のチームになりましたとさ。めでたしめでたし。</div>
 </div>
 
-<div class="chara" style="margin-top: 20px;">
+<div class="chara" style="margin-top: 10px;">
 <span class="chara-icon">👨‍💼</span>
 <div class="chara-bubble">
 <div class="chara-name">先輩（田中）</div>
@@ -674,7 +679,7 @@ DESC法で建設的なフィードバックを
 <span class="chara-icon">😊</span>
 <div class="chara-bubble">
 <div class="chara-name">後輩（鈴木）</div>
-田中さんも変わりましたよ！<strong>最初は怖かったのに...</strong>
+田中さんも変わりましたよ！ <strong>最初は怖かったのに...</strong>
 </div>
 </div>
 
