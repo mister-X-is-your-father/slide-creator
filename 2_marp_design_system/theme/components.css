@@ -1,0 +1,359 @@
+/* ========================================
+   Marp Design System - Components
+   ======================================== */
+
+/* タイトルスライド */
+.title-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+
+.title-slide h1 {
+  font-size: 2.8em;
+  border-bottom: none;
+  margin-bottom: 0.3em;
+}
+
+.title-slide p {
+  font-size: 1.4em;
+  color: var(--secondary);
+}
+
+/* セクションヘッダー */
+.section-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary) 0%, #1d4ed8 100%);
+  color: white;
+  text-align: center;
+}
+
+.section-header h1 {
+  color: white;
+  border-bottom: none;
+  font-size: 3em;
+}
+
+/* 2カラムレイアウト */
+.two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2em;
+  height: 100%;
+}
+
+.two-column .column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 3カラムレイアウト */
+.three-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5em;
+  height: 100%;
+}
+
+.three-column .column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* メトリックカード（KPI表示） */
+.metric-card {
+  background: linear-gradient(135deg, var(--code-bg) 0%, white 100%);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5em;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.metric-card .number {
+  font-size: 3em;
+  font-weight: bold;
+  color: var(--primary);
+  line-height: 1.2;
+}
+
+.metric-card .label {
+  font-size: 1em;
+  color: var(--secondary);
+  margin-top: 0.5em;
+}
+
+.metric-card .change {
+  font-size: 0.9em;
+  margin-top: 0.3em;
+}
+
+.metric-card .change.positive {
+  color: var(--success);
+}
+
+.metric-card .change.negative {
+  color: var(--error);
+}
+
+/* メトリックグリッド */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1em;
+}
+
+/* コードブロック強調 */
+.code-block {
+  background-color: #1e293b;
+  color: #e2e8f0;
+  padding: 1.5em;
+  border-radius: 8px;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 0.9em;
+  overflow-x: auto;
+}
+
+.code-block .comment {
+  color: #64748b;
+}
+
+.code-block .keyword {
+  color: #c084fc;
+}
+
+.code-block .string {
+  color: #4ade80;
+}
+
+.code-block .function {
+  color: #60a5fa;
+}
+
+/* 引用ボックス */
+.quote-box {
+  background-color: var(--code-bg);
+  border-left: 5px solid var(--accent);
+  padding: 1.5em 2em;
+  margin: 1em 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.quote-box p {
+  font-size: 1.2em;
+  font-style: italic;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.quote-box .author {
+  text-align: right;
+  color: var(--secondary);
+  font-style: normal;
+  margin-top: 1em;
+}
+
+/* 比較表 */
+.comparison-table {
+  width: 100%;
+}
+
+.comparison-table table {
+  width: 100%;
+}
+
+.comparison-table th:first-child {
+  background-color: var(--secondary);
+}
+
+.comparison-table .check {
+  color: var(--success);
+  font-size: 1.2em;
+}
+
+.comparison-table .cross {
+  color: var(--error);
+  font-size: 1.2em;
+}
+
+/* タイムライン */
+.timeline {
+  position: relative;
+  padding-left: 2em;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.5em;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: var(--primary);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.5em;
+  padding-left: 1em;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -1.5em;
+  top: 0.5em;
+  width: 12px;
+  height: 12px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
+.timeline-item .date {
+  font-size: 0.9em;
+  color: var(--secondary);
+  font-weight: bold;
+}
+
+.timeline-item .content {
+  margin-top: 0.3em;
+}
+
+/* 強調ボックス */
+.highlight-box {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  padding: 1em 1.5em;
+  margin: 1em 0;
+}
+
+.highlight-box.info {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border-color: var(--primary);
+}
+
+.highlight-box.success {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border-color: var(--success);
+}
+
+.highlight-box.warning {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-color: var(--warning);
+}
+
+.highlight-box.error {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  border-color: var(--error);
+}
+
+/* 画像+キャプション */
+.image-caption {
+  text-align: center;
+}
+
+.image-caption img {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.image-caption .caption {
+  font-size: 0.9em;
+  color: var(--secondary);
+  margin-top: 0.5em;
+}
+
+/* 箇条書き強調 */
+.bullet-points {
+  list-style: none;
+  padding: 0;
+}
+
+.bullet-points li {
+  position: relative;
+  padding-left: 2em;
+  margin-bottom: 1em;
+}
+
+.bullet-points li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+/* ステップ表示 */
+.steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1em;
+}
+
+.step {
+  flex: 1;
+  text-align: center;
+  padding: 1em;
+}
+
+.step .number {
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+.step .title {
+  font-weight: bold;
+  margin-bottom: 0.3em;
+}
+
+.step .description {
+  font-size: 0.9em;
+  color: var(--secondary);
+}
+
+/* プロ・コンリスト */
+.pros-cons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2em;
+}
+
+.pros h3::before {
+  content: '✓ ';
+  color: var(--success);
+}
+
+.cons h3::before {
+  content: '✗ ';
+  color: var(--error);
+}
+
+.pros li::marker {
+  color: var(--success);
+}
+
+.cons li::marker {
+  color: var(--error);
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML直接生成デモ</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', 'Helvetica Neue', Arial, sans-serif;
+      background: #f5f5f5;
+    }
+
+    .slide {
+      width: 1280px;
+      height: 720px;
+      padding: 60px;
+      background: #ffffff;
+      page-break-after: always;
+      margin: 20px auto;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    h1 {
+      color: #2563eb;
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+      border-bottom: 3px solid #2563eb;
+      padding-bottom: 0.3em;
+    }
+
+    h2 {
+      color: #1e293b;
+      font-size: 1.8em;
+      margin-bottom: 0.5em;
+    }
+
+    p {
+      font-size: 1.4em;
+      line-height: 1.8;
+      color: #1e293b;
+    }
+
+    ul {
+      font-size: 1.4em;
+      line-height: 2;
+      margin-left: 1.5em;
+      color: #1e293b;
+    }
+
+    .title-slide {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .title-slide h1 {
+      border-bottom: none;
+      font-size: 3em;
+    }
+
+    .title-slide p {
+      color: #64748b;
+      font-size: 1.6em;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      right: 40px;
+      color: #64748b;
+      font-size: 0.9em;
+    }
+
+    .page-number {
+      position: absolute;
+      bottom: 20px;
+      left: 40px;
+      color: #64748b;
+      font-size: 0.9em;
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+      .slide {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slide title-slide">
+    <h1>HTML直接生成デモ</h1>
+    <p>Marpを使わないアプローチ</p>
+    <div class="page-number">1</div>
+  </div>
+
+  <div class="slide">
+    <h1>アジェンダ</h1>
+    <ul>
+      <li>HTML直接生成とは</li>
+      <li>メリット・デメリット</li>
+      <li>まとめ</li>
+    </ul>
+    <div class="page-number">2</div>
+    <div class="footer">HTML直接生成デモ</div>
+  </div>
+
+  <div class="slide">
+    <h1>HTML直接生成とは</h1>
+    <p>Marpなどの専門ツールを使わず、純粋なHTML/CSSでスライドを作成</p>
+    <ul>
+      <li>学習コストが低い（HTML/CSS知識のみ）</li>
+      <li>自由度が高い</li>
+      <li>完全なカスタマイズが可能</li>
+    </ul>
+    <div class="page-number">3</div>
+    <div class="footer">HTML直接生成デモ</div>
+  </div>
+
+  <div class="slide">
+    <h1>メリット</h1>
+    <ul>
+      <li>専門ツールの学習不要</li>
+      <li>CSSで全ページ一括変更</li>
+      <li>完全な自由度</li>
+      <li>GitHubで管理可能</li>
+    </ul>
+    <div class="page-number">4</div>
+    <div class="footer">HTML直接生成デモ</div>
+  </div>
+
+  <div class="slide">
+    <h1>デメリット</h1>
+    <ul>
+      <li>ページ管理が煩雑</li>
+      <li>レスポンシブ対応は自前</li>
+      <li>Markdownの簡潔さがない</li>
+    </ul>
+    <div class="page-number">5</div>
+    <div class="footer">HTML直接生成デモ</div>
+  </div>
+
+  <div class="slide">
+    <h1>まとめ</h1>
+    <ul>
+      <li>HTML/CSS知識があれば即座に使える</li>
+      <li>自由度が高く完全カスタマイズ可能</li>
+      <li>シンプルなスライドに最適</li>
+    </ul>
+    <div class="page-number">6</div>
+    <div class="footer">HTML直接生成デモ</div>
+  </div>
+
+  <div class="slide title-slide">
+    <h1>ご清聴ありがとうございました</h1>
+    <div class="page-number">7</div>
+  </div>
+
+</body>
+</html>
