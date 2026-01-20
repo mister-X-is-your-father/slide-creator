@@ -944,6 +944,146 @@ style: |
   }
   .check { color: var(--success); font-weight: bold; }
   .cross { color: var(--error); font-weight: bold; }
+  /* 実要素タイムライン（縦）- テーブル形式 */
+  .timeline-v { border-collapse: collapse; }
+  .timeline-v td { padding: 0.2em 0.5em; vertical-align: top; }
+  .timeline-v .col-line { text-align: center; color: var(--primary); line-height: 1.2; width: 30px; }
+  .timeline-v .col-date { font-weight: bold; color: var(--secondary); white-space: nowrap; }
+  .timeline-v .col-content { }
+  /* 実要素タイムライン（横）- 線を背景で描画 */
+  .timeline-h {
+    display: flex; justify-content: space-between; text-align: center;
+    position: relative; padding-top: 1.5em;
+  }
+  .timeline-h-line {
+    position: absolute; top: 0.6em; left: 10%; right: 10%;
+    height: 3px; background: var(--primary);
+  }
+  .timeline-h .tl-h-item { flex: 1; position: relative; }
+  .timeline-h .tl-h-dot {
+    display: inline-block; width: 16px; height: 16px;
+    background: var(--primary); border-radius: 50%;
+    position: absolute; top: -1.2em; left: 50%; transform: translateX(-50%);
+  }
+  .timeline-h .tl-h-date { font-weight: bold; color: var(--primary); margin-top: 0.5em; }
+  /* 実要素ステップ */
+  .steps-real { display: flex; justify-content: center; align-items: center; gap: 0.3em; }
+  .steps-real .st-item {
+    background: var(--primary); color: white; padding: 0.8em 1.2em;
+    border-radius: 8px; text-align: center; min-width: 100px;
+  }
+  .steps-real .st-arrow { color: var(--primary); font-size: 1.5em; }
+  /* 実要素チェックリスト */
+  .check-list { list-style: none; padding: 0; }
+  .check-list li { display: flex; align-items: center; gap: 0.5em; margin-bottom: 0.5em; padding: 0.4em; background: var(--code-bg); border-radius: 6px; }
+  .check-list .icon { font-size: 1.1em; }
+  .check-list .done { color: var(--success); }
+  .check-list .pending { color: var(--secondary); }
+  /* 実要素番号リスト */
+  .num-list { list-style: none; padding: 0; }
+  .num-list li { display: flex; align-items: flex-start; gap: 0.8em; margin-bottom: 0.6em; }
+  .num-list .num {
+    background: var(--primary); color: white; width: 28px; height: 28px;
+    border-radius: 50%; display: flex; justify-content: center; align-items: center;
+    font-weight: bold; flex-shrink: 0; font-size: 0.9em;
+  }
+  /* 実要素ステータス */
+  .st-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 0.4em; }
+  .st-dot.active { background: var(--success); }
+  .st-dot.pending { background: var(--accent); }
+  .st-dot.inactive { background: var(--secondary); }
+  /* コンパクト化 */
+  .compact { font-size: 0.85em; }
+  .compact h1 { font-size: 1.5em; margin-bottom: 0.3em; }
+  .compact h3 { font-size: 1em; margin: 0.3em 0; }
+  .compact ul, .compact ol { margin: 0.3em 0; }
+  .compact li { margin-bottom: 0.2em; }
+  /* ベン図 */
+  .venn { display: flex; justify-content: center; align-items: center; position: relative; min-height: 280px; }
+  .venn .circle {
+    width: 180px; height: 180px; border-radius: 50%; position: absolute;
+    display: flex; justify-content: center; align-items: center;
+    font-weight: bold; opacity: 0.7;
+  }
+  .venn .circle-a { background: #3b82f6; left: 20%; }
+  .venn .circle-b { background: #10b981; right: 20%; }
+  .venn .center-text { position: absolute; z-index: 10; font-weight: bold; }
+  /* ツリー図 */
+  .tree { text-align: center; }
+  .tree .root {
+    display: inline-block; background: var(--primary); color: white;
+    padding: 0.8em 2em; border-radius: 8px; font-weight: bold;
+  }
+  .tree .branches { display: flex; justify-content: center; gap: 2em; margin-top: 0.5em; }
+  .tree .branch-line { color: var(--primary); font-size: 1.5em; }
+  .tree .branch-item {
+    background: white; border: 2px solid var(--primary);
+    padding: 0.6em 1.2em; border-radius: 8px; text-align: center;
+  }
+  /* 因果関係 */
+  .cause-effect { display: flex; justify-content: center; align-items: center; gap: 1em; }
+  .cause-effect .cause, .cause-effect .effect {
+    background: white; border: 2px solid var(--primary);
+    padding: 1em 1.5em; border-radius: 8px; text-align: center;
+  }
+  .cause-effect .cause { border-color: var(--accent); }
+  .cause-effect .effect { border-color: var(--success); }
+  .cause-effect .arrow { font-size: 2em; color: var(--primary); }
+  /* 数式（足し算・掛け算） */
+  .formula { display: flex; justify-content: center; align-items: center; gap: 0.8em; font-size: 1.1em; }
+  .formula .element {
+    background: var(--primary); color: white;
+    padding: 1em 1.5em; border-radius: 8px; text-align: center; min-width: 100px;
+  }
+  .formula .operator { font-size: 2em; font-weight: bold; color: var(--primary); }
+  .formula .result {
+    background: var(--success); color: white;
+    padding: 1em 1.5em; border-radius: 8px; text-align: center; min-width: 120px;
+  }
+  /* ランキング */
+  .ranking { display: flex; flex-direction: column; gap: 0.5em; }
+  .ranking .rank-item { display: flex; align-items: center; gap: 1em; padding: 0.5em; }
+  .ranking .rank-num {
+    width: 40px; height: 40px; border-radius: 50%; display: flex;
+    justify-content: center; align-items: center; font-weight: bold; color: white;
+  }
+  .ranking .rank-1 { background: #fbbf24; }
+  .ranking .rank-2 { background: #9ca3af; }
+  .ranking .rank-3 { background: #b45309; }
+  .ranking .rank-other { background: var(--secondary); }
+  .ranking .rank-bar {
+    flex: 1; background: var(--code-bg); height: 30px; border-radius: 4px;
+    display: flex; align-items: center;
+  }
+  .ranking .rank-fill { height: 100%; background: var(--primary); border-radius: 4px; }
+  .ranking .rank-label { margin-left: 0.5em; font-weight: bold; }
+  /* 階段図 */
+  .stairs { display: flex; align-items: flex-end; justify-content: center; gap: 0.5em; }
+  .stairs .stair {
+    background: var(--primary); color: white; text-align: center;
+    padding: 0.5em 1em; border-radius: 4px 4px 0 0; min-width: 80px;
+  }
+  .stairs .stair-1 { height: 60px; opacity: 0.5; }
+  .stairs .stair-2 { height: 100px; opacity: 0.65; }
+  .stairs .stair-3 { height: 140px; opacity: 0.8; }
+  .stairs .stair-4 { height: 180px; opacity: 1; }
+  /* 包括図 */
+  .nested {
+    border: 3px solid var(--primary); border-radius: 12px; padding: 1em;
+    background: #eff6ff; text-align: center;
+  }
+  .nested .outer-label { font-weight: bold; color: var(--primary); margin-bottom: 0.5em; }
+  .nested .inner {
+    border: 2px solid var(--secondary); border-radius: 8px; padding: 0.8em;
+    background: white; display: inline-block;
+  }
+  /* 相互関係 */
+  .mutual { display: flex; justify-content: center; align-items: center; gap: 0.5em; }
+  .mutual .element {
+    background: white; border: 2px solid var(--primary);
+    padding: 1em 1.5em; border-radius: 8px; text-align: center;
+  }
+  .mutual .arrows { display: flex; flex-direction: column; color: var(--primary); font-size: 1.2em; }
 ---
 
 <div class="title-slide">
@@ -1366,24 +1506,12 @@ style: |
 
 時系列での出来事表示
 
-<div class="timeline">
-<div class="timeline-item">
-<div class="date">2024/01</div>
-<div class="content">プロジェクト開始・要件定義</div>
-</div>
-<div class="timeline-item">
-<div class="date">2024/03</div>
-<div class="content">設計完了・開発着手</div>
-</div>
-<div class="timeline-item">
-<div class="date">2024/06</div>
-<div class="content">テスト・品質保証</div>
-</div>
-<div class="timeline-item">
-<div class="date">2024/09</div>
-<div class="content">本番リリース</div>
-</div>
-</div>
+<table class="timeline-v">
+<tr><td class="col-line">●<br>│</td><td class="col-date">2024/01</td><td class="col-content">プロジェクト開始・要件定義</td></tr>
+<tr><td class="col-line">●<br>│</td><td class="col-date">2024/03</td><td class="col-content">設計完了・開発着手</td></tr>
+<tr><td class="col-line">●<br>│</td><td class="col-date">2024/06</td><td class="col-content">テスト・品質保証</td></tr>
+<tr><td class="col-line">●</td><td class="col-date">2024/09</td><td class="col-content">本番リリース</td></tr>
+</table>
 
 ---
 
@@ -1391,23 +1519,12 @@ style: |
 
 マイルストーン表示
 
-<div class="timeline-horizontal">
-<div class="item">
-<div class="date">Q1</div>
-<div>企画</div>
-</div>
-<div class="item">
-<div class="date">Q2</div>
-<div>開発</div>
-</div>
-<div class="item">
-<div class="date">Q3</div>
-<div>テスト</div>
-</div>
-<div class="item">
-<div class="date">Q4</div>
-<div>リリース</div>
-</div>
+<div class="timeline-h">
+<div class="timeline-h-line"></div>
+<div class="tl-h-item"><div class="tl-h-dot"></div><div class="tl-h-date">Q1</div><div>企画</div></div>
+<div class="tl-h-item"><div class="tl-h-dot"></div><div class="tl-h-date">Q2</div><div>開発</div></div>
+<div class="tl-h-item"><div class="tl-h-dot"></div><div class="tl-h-date">Q3</div><div>テスト</div></div>
+<div class="tl-h-item"><div class="tl-h-dot"></div><div class="tl-h-date">Q4</div><div>リリース</div></div>
 </div>
 
 ---
@@ -1636,13 +1753,13 @@ Before/After、プロコンなど
 
 タスク管理用リスト
 
-<ul class="checklist">
-<li class="checked">要件定義完了</li>
-<li class="checked">基本設計完了</li>
-<li class="checked">詳細設計完了</li>
-<li>実装中</li>
-<li>テスト</li>
-<li>リリース</li>
+<ul class="check-list">
+<li><span class="icon done">☑</span>要件定義完了</li>
+<li><span class="icon done">☑</span>基本設計完了</li>
+<li><span class="icon done">☑</span>詳細設計完了</li>
+<li><span class="icon pending">☐</span>実装中</li>
+<li><span class="icon pending">☐</span>テスト</li>
+<li><span class="icon pending">☐</span>リリース</li>
 </ul>
 
 ---
@@ -1651,12 +1768,12 @@ Before/After、プロコンなど
 
 手順の明示
 
-<ol class="numbered-list">
-<li>アカウントを作成する</li>
-<li>プロジェクトを新規作成</li>
-<li>設定ファイルを配置</li>
-<li>デプロイコマンドを実行</li>
-</ol>
+<ul class="num-list">
+<li><span class="num">1</span>アカウントを作成する</li>
+<li><span class="num">2</span>プロジェクトを新規作成</li>
+<li><span class="num">3</span>設定ファイルを配置</li>
+<li><span class="num">4</span>デプロイコマンドを実行</li>
+</ul>
 
 ---
 
@@ -1794,9 +1911,9 @@ Before/After、プロコンなど
 
 **プロジェクト状態:**
 
-<span class="status active">稼働中</span> &nbsp;
-<span class="status pending">保留中</span> &nbsp;
-<span class="status inactive">停止中</span>
+<span class="st-dot active"></span>稼働中 &nbsp;&nbsp;
+<span class="st-dot pending"></span>保留中 &nbsp;&nbsp;
+<span class="st-dot inactive"></span>停止中
 
 ---
 
@@ -2059,9 +2176,152 @@ FAQ、統計、引用など
 
 ---
 
+<div class="section-header">
+
+# 追加図解パターン
+
+ベン図、ツリー図、因果関係など
+
+</div>
+
+---
+
+# ベン図
+
+集合関係の表現
+
+<div class="venn">
+<div class="circle circle-a">デザイン</div>
+<div class="circle circle-b">技術</div>
+<div class="center-text">UX</div>
+</div>
+
+---
+
+# ツリー図
+
+階層構造の枝分かれ
+
+<div class="tree">
+<div class="root">戦略</div>
+<div class="branch-line">├────┼────┤</div>
+<div class="branches">
+<div class="branch-item">施策A</div>
+<div class="branch-item">施策B</div>
+<div class="branch-item">施策C</div>
+</div>
+</div>
+
+---
+
+# 因果関係図
+
+原因と結果の関係
+
+<div class="cause-effect">
+<div class="cause"><strong>原因</strong><br>コスト増加</div>
+<div class="arrow">→</div>
+<div class="cause"><strong>要因</strong><br>人件費高騰</div>
+<div class="arrow">→</div>
+<div class="effect"><strong>結果</strong><br>価格改定</div>
+</div>
+
+---
+
+# 数式図（足し算）
+
+要素の組み合わせ
+
+<div class="formula">
+<div class="element">技術力</div>
+<span class="operator">+</span>
+<div class="element">デザイン</div>
+<span class="operator">=</span>
+<div class="result">優れたUX</div>
+</div>
+
+---
+
+# 数式図（掛け算）
+
+相乗効果の表現
+
+<div class="formula">
+<div class="element">品質</div>
+<span class="operator">×</span>
+<div class="element">スピード</div>
+<span class="operator">=</span>
+<div class="result">競争優位性</div>
+</div>
+
+---
+
+# ランキング
+
+順位と比較
+
+<div class="ranking">
+<div class="rank-item">
+<div class="rank-num rank-1">1</div>
+<div class="rank-bar"><div class="rank-fill" style="width:100%;"></div></div>
+<span class="rank-label">製品A (45%)</span>
+</div>
+<div class="rank-item">
+<div class="rank-num rank-2">2</div>
+<div class="rank-bar"><div class="rank-fill" style="width:70%;"></div></div>
+<span class="rank-label">製品B (32%)</span>
+</div>
+<div class="rank-item">
+<div class="rank-num rank-3">3</div>
+<div class="rank-bar"><div class="rank-fill" style="width:40%;"></div></div>
+<span class="rank-label">製品C (18%)</span>
+</div>
+</div>
+
+---
+
+# 階段図
+
+段階的な成長・進化
+
+<div class="stairs">
+<div class="stair stair-1">基礎</div>
+<div class="stair stair-2">応用</div>
+<div class="stair stair-3">実践</div>
+<div class="stair stair-4">熟達</div>
+</div>
+
+---
+
+# 包括図
+
+入れ子関係の表現
+
+<div class="nested">
+<div class="outer-label">経営戦略</div>
+<div class="nested" style="margin: 0.5em;">
+<div class="outer-label">事業戦略</div>
+<div class="inner">機能戦略</div>
+</div>
+</div>
+
+---
+
+# 相互関係図
+
+双方向の影響
+
+<div class="mutual">
+<div class="element"><strong>顧客</strong><br>ニーズ提供</div>
+<div class="arrows">→<br>←</div>
+<div class="element"><strong>企業</strong><br>価値提供</div>
+</div>
+
+---
+
 <div class="title-slide">
 
-# 全50種類の図解コンポーネント
+# 全60種類の図解コンポーネント
 
 このデザインシステムで表現力豊かなスライドを作成できます
 
