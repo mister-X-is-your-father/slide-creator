@@ -1,0 +1,201 @@
+/*!
+ * @theme picturebook
+ * @auto-scaling true
+ * 絵本テンプレート - 販売品質
+ */
+
+@import 'default';
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Kosugi+Maru&family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap');
+
+section {
+  width: 1280px;
+  height: 720px;
+  font-family: 'M PLUS Rounded 1c', 'Zen Maru Gothic', sans-serif;
+  background: linear-gradient(180deg, #FFF8E7 0%, #FFF5E0 100%);
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* タイトルページ */
+section.title {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-align: center;
+  flex-direction: column;
+}
+
+section.title h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+  margin-bottom: 0.5em;
+  letter-spacing: 0.1em;
+}
+
+section.title p {
+  font-size: 1.5rem;
+  opacity: 0.9;
+}
+
+/* 本文ページ - 左画像右テキスト */
+section.left-image {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 0;
+  padding: 0;
+}
+
+section.left-image .image-area {
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0 40px 40px 0;
+  box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+}
+
+section.left-image .text-area {
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(180deg, #FFFDF7 0%, #FFF8E7 100%);
+}
+
+/* 本文ページ - 右画像左テキスト */
+section.right-image {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  gap: 0;
+  padding: 0;
+}
+
+section.right-image .text-area {
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(180deg, #FFFDF7 0%, #FFF8E7 100%);
+}
+
+section.right-image .image-area {
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 40px 0 0 40px;
+  box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+}
+
+/* 全面画像 */
+section.full-image {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+section.full-image::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+}
+
+section.full-image .text-overlay {
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+  right: 60px;
+  color: white;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+/* テキストスタイル */
+h1, h2 {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  color: #4A3728;
+  font-weight: 700;
+}
+
+p {
+  font-size: 1.6rem;
+  line-height: 2;
+  color: #5D4E3A;
+  font-weight: 400;
+}
+
+.large-text {
+  font-size: 2.2rem;
+  line-height: 1.8;
+  font-weight: 500;
+}
+
+.story-text {
+  font-size: 1.8rem;
+  line-height: 2.2;
+  color: #4A3728;
+}
+
+/* 夜空テーマ */
+section.night {
+  background: linear-gradient(180deg, #0F0C29 0%, #302B63 50%, #24243E 100%);
+  color: #F0E6D3;
+}
+
+section.night p {
+  color: #E8DFD0;
+}
+
+/* 朝焼けテーマ */
+section.sunrise {
+  background: linear-gradient(180deg, #FF9A8B 0%, #FF6B8A 50%, #FF8E53 100%);
+  color: white;
+}
+
+/* 森テーマ */
+section.forest {
+  background: linear-gradient(180deg, #134E5E 0%, #71B280 100%);
+  color: white;
+}
+
+/* エンディング */
+section.ending {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  text-align: center;
+  flex-direction: column;
+}
+
+section.ending h1 {
+  font-size: 3.5rem;
+  color: white;
+  margin-bottom: 1em;
+}
+
+section.ending p {
+  color: rgba(255,255,255,0.9);
+  font-size: 1.3rem;
+}
+
+/* 装飾 */
+.sparkle {
+  position: relative;
+}
+
+.sparkle::after {
+  content: '✨';
+  position: absolute;
+  font-size: 2rem;
+  animation: sparkle 2s infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
