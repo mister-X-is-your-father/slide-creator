@@ -7,127 +7,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reset.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
-    <link href="https://fonts.googleapis.com/css2?family=Yomogi&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --paper: #FAFAFA;
-            --ink: #2D2D2D;
-            --ink-light: #6B7280;
-            --red: #DC2626;
-            --line: #E5E7EB;
-        }
-
-        .reveal {
-            font-family: 'Yomogi', cursive;
-            background:
-                repeating-linear-gradient(
-                    transparent,
-                    transparent 31px,
-                    var(--line) 31px,
-                    var(--line) 32px
-                ),
-                var(--paper);
-        }
-
         .reveal h1, .reveal h2, .reveal h3 {
             font-family: 'Yomogi', cursive;
-            color: var(--ink);
         }
-
-        .reveal .slides section {
-            background: transparent;
-            padding: 40px 60px;
-            text-align: left;
-        }
-
-        /* ノート風テキスト */
-        .note-text {
-            font-size: 1.2em;
-            line-height: 2;
-            color: var(--ink);
-        }
-
-        .note-text.center {
-            text-align: center;
-        }
-
-        /* 手書き風の取り消し線 */
-        .strikethrough {
-            text-decoration: line-through;
-            color: var(--ink-light);
-        }
-
-        /* 赤ペン */
-        .red-ink {
-            color: var(--red);
-        }
-
-        /* 強調（丸で囲む風） */
-        .circled {
-            border: 2px solid var(--red);
-            border-radius: 50%;
-            padding: 2px 8px;
-        }
-
-        /* 下線 */
-        .underline {
-            border-bottom: 2px solid var(--ink);
-        }
-
-        .underline-red {
-            border-bottom: 2px solid var(--red);
-        }
-
-        /* 余白メモ */
-        .margin-note {
-            position: absolute;
-            right: 20px;
-            font-size: 0.8em;
-            color: var(--ink-light);
-            transform: rotate(2deg);
-        }
-
-        /* 日付 */
-        .date {
-            font-size: 0.9em;
-            color: var(--ink-light);
-            margin-bottom: 20px;
-        }
-
-        /* ページ番号 */
-        .page-num {
-            position: absolute;
-            bottom: 20px;
-            right: 40px;
-            font-size: 0.8em;
-            color: var(--ink-light);
-        }
-
-        /* 恐怖演出 */
-        .glitch {
-            animation: glitch 0.3s infinite;
-        }
-
-        @keyframes glitch {
-            0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(2px, -2px); }
-            60% { transform: translate(-2px, -2px); }
-            80% { transform: translate(2px, 2px); }
-            100% { transform: translate(0); }
-        }
-
-        .fade-text {
-            opacity: 0.3;
-        }
-
-        /* 汚れ・シミ風 */
-        .stain {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(ellipse, rgba(139,69,19,0.1) 0%, transparent 70%);
-            border-radius: 50%;
+        .reveal {
+            font-family: 'Yomogi', cursive;
         }
     </style>
 </head>
@@ -142,9 +27,7 @@
         Reveal.initialize({
             hash: true,
             transition: 'none',
-            backgroundTransition: 'none',
-            width: 1280,
-            height: 720
+            backgroundTransition: 'none'
         });
     </script>
 </body>
