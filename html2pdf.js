@@ -7,7 +7,6 @@ const path = require('path');
   await page.setViewport({ width: 1280, height: 720 });
   
   const htmlPath = path.resolve(__dirname, process.argv[2]);
-  console.log('Loading:', htmlPath);
   await page.goto('file://' + htmlPath, { waitUntil: 'networkidle0' });
   
   const outPath = path.resolve(__dirname, process.argv[3]);
@@ -19,5 +18,5 @@ const path = require('path');
   });
   
   await browser.close();
-  console.log('PDF generated:', outPath);
+  console.log('Generated:', outPath);
 })();
