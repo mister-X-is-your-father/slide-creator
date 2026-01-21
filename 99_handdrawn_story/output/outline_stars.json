@@ -1,0 +1,133 @@
+{
+  "title": "星をあつめる少女",
+  "theme": "夢を追いかける勇気",
+  "lesson": "小さな光を集め続ければ、大きな輝きになる",
+  "characters": [
+    {
+      "name": "ルナ",
+      "role": "主人公",
+      "color": "blue",
+      "symbol": "月"
+    },
+    {
+      "name": "おばあちゃん",
+      "role": "メンター",
+      "color": "purple",
+      "symbol": "祖"
+    },
+    {
+      "name": "カラス",
+      "role": "試練",
+      "color": "orange",
+      "symbol": "烏"
+    }
+  ],
+  "pages": [
+    {
+      "number": 1,
+      "type": "cover",
+      "section": "表紙",
+      "text": "星をあつめる少女",
+      "illustration": "夜空を見上げる少女のシルエット",
+      "background": "night"
+    },
+    {
+      "number": 2,
+      "type": "story",
+      "section": "導入",
+      "text": "ルナは夜空を見上げるのが大好きな女の子。「いつか星に届きたい」それがルナの夢でした。",
+      "background": "night"
+    },
+    {
+      "number": 3,
+      "type": "story",
+      "section": "導入",
+      "text": "ある夜、おばあちゃんが不思議なビンをくれました。「これは星を集めるビンだよ」",
+      "background": "night"
+    },
+    {
+      "number": 4,
+      "type": "dialogue",
+      "section": "導入",
+      "text": "「でも星は遠すぎて届かないよ」「本当にそうかしら？よく見てごらん」",
+      "background": "night"
+    },
+    {
+      "number": 5,
+      "type": "story",
+      "section": "展開",
+      "text": "おばあちゃんが指さした先。水たまりに星が映っていました。ルナはそっとすくいました。",
+      "background": "night"
+    },
+    {
+      "number": 6,
+      "type": "story",
+      "section": "展開",
+      "text": "ビンの中で小さな光がゆらゆら。「できた！」ルナの目が輝きました。",
+      "background": "night"
+    },
+    {
+      "number": 7,
+      "type": "story",
+      "section": "展開",
+      "text": "それからルナは毎晩星を集めました。露に映る星、窓に映る星、涙に映る星...",
+      "background": "night"
+    },
+    {
+      "number": 8,
+      "type": "story",
+      "section": "事件",
+      "text": "ある日、カラスがビンをくわえて飛んでいきました。「あ！私の星！」",
+      "background": "sunset"
+    },
+    {
+      "number": 9,
+      "type": "story",
+      "section": "事件",
+      "text": "ビンは遠くの木の上に落ちて割れました。光がバラバラに散っていきます。",
+      "background": "sunset"
+    },
+    {
+      "number": 10,
+      "type": "story",
+      "section": "試練",
+      "text": "ルナは泣きました。「全部なくなっちゃった...」",
+      "background": "sunset"
+    },
+    {
+      "number": 11,
+      "type": "dialogue",
+      "section": "解決",
+      "text": "おばあちゃんが言いました。「上を見てごらん」",
+      "background": "night"
+    },
+    {
+      "number": 12,
+      "type": "story",
+      "section": "解決",
+      "text": "散らばった光は夜空に昇っていき、新しい星座になっていました。",
+      "background": "night"
+    },
+    {
+      "number": 13,
+      "type": "dialogue",
+      "section": "解決",
+      "text": "「あなたが集めた光は、消えたんじゃない。空に届いたのよ」",
+      "background": "night"
+    },
+    {
+      "number": 14,
+      "type": "ending",
+      "section": "教訓",
+      "text": "小さな光を集め続ければ、いつか大きな輝きになる。ルナの星座は今も夜空で輝いています。",
+      "background": "night"
+    },
+    {
+      "number": 15,
+      "type": "ending",
+      "section": "教訓",
+      "text": "おしまい",
+      "background": "night"
+    }
+  ]
+}
