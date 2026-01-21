@@ -1,0 +1,73 @@
+{
+  "name": "基本構造",
+  "description": "シンプルな起承転結の物語構造",
+  "page_count_range": [10, 20],
+
+  "structure": [
+    {
+      "section": "表紙",
+      "pages": 1,
+      "types": ["cover"],
+      "purpose": "タイトルと雰囲気の提示"
+    },
+    {
+      "section": "導入",
+      "pages": [2, 3],
+      "types": ["story", "dialogue"],
+      "purpose": "主人公と世界観の紹介"
+    },
+    {
+      "section": "事件",
+      "pages": [1, 2],
+      "types": ["story"],
+      "purpose": "問題の発生、物語の起点"
+    },
+    {
+      "section": "展開",
+      "pages": [4, 8],
+      "types": ["story", "dialogue", "lesson"],
+      "purpose": "試練、冒険、学び"
+    },
+    {
+      "section": "クライマックス",
+      "pages": [2, 3],
+      "types": ["story", "dialogue"],
+      "purpose": "最大の困難、決断の瞬間"
+    },
+    {
+      "section": "解決",
+      "pages": [2, 3],
+      "types": ["story"],
+      "purpose": "問題解決、成長の確認"
+    },
+    {
+      "section": "エンディング",
+      "pages": [1, 2],
+      "types": ["ending", "moral"],
+      "purpose": "教訓、余韻"
+    },
+    {
+      "section": "裏表紙",
+      "pages": 1,
+      "types": ["back_cover"],
+      "purpose": "締めの言葉"
+    }
+  ],
+
+  "pacing": {
+    "opening": "ゆっくり、世界に引き込む",
+    "middle": "テンポよく、緊張と緩和",
+    "climax": "速く、緊迫感",
+    "ending": "ゆっくり、余韻を残す"
+  },
+
+  "emotional_arc": [
+    {"point": "開始", "emotion": "平穏/好奇心"},
+    {"point": "事件", "emotion": "驚き/不安"},
+    {"point": "展開前半", "emotion": "希望/挑戦"},
+    {"point": "展開後半", "emotion": "挫折/困難"},
+    {"point": "クライマックス", "emotion": "緊張/決意"},
+    {"point": "解決", "emotion": "達成/喜び"},
+    {"point": "エンディング", "emotion": "満足/成長"}
+  ]
+}

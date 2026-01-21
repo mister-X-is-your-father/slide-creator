@@ -1,0 +1,133 @@
+{
+  "name": "三幕構成",
+  "description": "映画脚本風の三幕構成。明確なターニングポイントを持つ",
+  "page_count_range": [20, 35],
+
+  "structure": [
+    {
+      "act": 1,
+      "name": "第一幕：設定",
+      "percentage": 25,
+      "sections": [
+        {
+          "section": "オープニング",
+          "pages": [1, 2],
+          "types": ["cover", "hook"],
+          "purpose": "興味を引く導入"
+        },
+        {
+          "section": "日常世界",
+          "pages": [2, 4],
+          "types": ["story"],
+          "purpose": "主人公の日常、欠落の提示"
+        },
+        {
+          "section": "きっかけ",
+          "pages": [1, 2],
+          "types": ["story", "dialogue"],
+          "purpose": "冒険への誘い"
+        },
+        {
+          "section": "第一ターニングポイント",
+          "pages": [1, 2],
+          "types": ["story"],
+          "purpose": "新世界への踏み出し"
+        }
+      ]
+    },
+    {
+      "act": 2,
+      "name": "第二幕：対立",
+      "percentage": 50,
+      "sections": [
+        {
+          "section": "新世界",
+          "pages": [3, 5],
+          "types": ["story", "dialogue"],
+          "purpose": "新しい環境、仲間との出会い"
+        },
+        {
+          "section": "試練と成長",
+          "pages": [4, 6],
+          "types": ["story", "dialogue", "lesson"],
+          "purpose": "スキル習得、小さな成功"
+        },
+        {
+          "section": "ミッドポイント",
+          "pages": [1, 2],
+          "types": ["story"],
+          "purpose": "物語の転換点、新たな真実"
+        },
+        {
+          "section": "危機の高まり",
+          "pages": [3, 5],
+          "types": ["story", "dialogue"],
+          "purpose": "敵の反撃、状況悪化"
+        },
+        {
+          "section": "最大の危機",
+          "pages": [2, 3],
+          "types": ["story"],
+          "purpose": "すべてを失う瞬間"
+        }
+      ]
+    },
+    {
+      "act": 3,
+      "name": "第三幕：解決",
+      "percentage": 25,
+      "sections": [
+        {
+          "section": "決意",
+          "pages": [1, 2],
+          "types": ["story", "dialogue"],
+          "purpose": "立ち上がる決意"
+        },
+        {
+          "section": "最終決戦",
+          "pages": [2, 4],
+          "types": ["story"],
+          "purpose": "クライマックスバトル"
+        },
+        {
+          "section": "解決",
+          "pages": [1, 2],
+          "types": ["story"],
+          "purpose": "勝利、問題解決"
+        },
+        {
+          "section": "新しい日常",
+          "pages": [1, 2],
+          "types": ["ending", "moral"],
+          "purpose": "成長した姿、教訓"
+        }
+      ]
+    }
+  ],
+
+  "turning_points": [
+    {
+      "name": "第一ターニングポイント",
+      "position": "25%",
+      "description": "日常から非日常へ"
+    },
+    {
+      "name": "ミッドポイント",
+      "position": "50%",
+      "description": "受動から能動へ"
+    },
+    {
+      "name": "第二ターニングポイント",
+      "position": "75%",
+      "description": "最大の危機から決意へ"
+    }
+  ],
+
+  "character_arc": {
+    "act1": "欠落を抱えた状態",
+    "act2_first": "外的目標を追う",
+    "midpoint": "内的目標に気づく",
+    "act2_second": "内面と向き合う",
+    "act3": "変化を証明する"
+  }
+}
