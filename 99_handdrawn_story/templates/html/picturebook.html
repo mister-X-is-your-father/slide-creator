@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FFF8E7;
+            --brown: #5D4037;
+            --blue: #64B5F6;
+            --pink: #F48FB1;
+            --green: #81C784;
+            --orange: #FFB74D;
+            --purple: #B39DDB;
+            --yellow: #FFD54F;
+        }
+
+        .reveal {
+            font-family: 'Zen Maru Gothic', sans-serif;
+            background: var(--cream);
+        }
+
+        .reveal h1, .reveal h2, .reveal h3 {
+            font-family: 'Zen Maru Gothic', sans-serif;
+            color: var(--brown);
+        }
+
+        .reveal .slides section {
+            background: var(--cream);
+            padding: 40px;
+        }
+
+        /* キャラクターアイコン */
+        .character {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 8px;
+            border: 3px solid;
+        }
+
+        .char-blue { background: #E3F2FD; border-color: var(--blue); color: var(--blue); }
+        .char-pink { background: #FCE4EC; border-color: var(--pink); color: #C2185B; }
+        .char-green { background: #E8F5E9; border-color: var(--green); color: #388E3C; }
+        .char-orange { background: #FFF3E0; border-color: var(--orange); color: #E65100; }
+        .char-purple { background: #EDE7F6; border-color: var(--purple); color: #7B1FA2; }
+
+        .char-large { width: 100px; height: 100px; font-size: 40px; }
+
+        /* テキストスタイル */
+        .story-text {
+            text-align: center;
+            font-size: 1.3em;
+            line-height: 2.2;
+            color: var(--brown);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .marker { background: linear-gradient(transparent 60%, var(--yellow) 60%); }
+        .text-blue { color: var(--blue); font-weight: 700; }
+        .text-pink { color: #C2185B; font-weight: 700; }
+        .text-purple { color: #7B1FA2; font-weight: 700; }
+        .text-orange { color: #E65100; font-weight: 700; }
+
+        /* 吹き出し */
+        .bubble {
+            background: white;
+            border: 2px solid var(--brown);
+            border-radius: 20px;
+            padding: 15px 25px;
+            margin: 10px auto;
+            max-width: 600px;
+            text-align: center;
+            color: var(--brown);
+        }
+
+        /* 背景 */
+        .bg-day { background: linear-gradient(180deg, #87CEEB 0%, #E0F7FA 100%) !important; }
+        .bg-sunset { background: linear-gradient(180deg, #FFCC80 0%, #FF8A65 50%, #E57373 100%) !important; }
+        .bg-night { background: linear-gradient(180deg, #1A237E 0%, #283593 50%, #3949AB 100%) !important; color: white; }
+        .bg-forest { background: linear-gradient(180deg, #C8E6C9 0%, #A5D6A7 50%, #81C784 100%) !important; }
+        .bg-sea { background: linear-gradient(180deg, #E3F2FD 0%, #90CAF9 60%, #64B5F6 100%) !important; }
+
+        /* 教訓ボックス */
+        .moral-box {
+            background: rgba(255,255,255,0.9);
+            border: 3px dashed var(--orange);
+            border-radius: 20px;
+            padding: 20px 30px;
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: center;
+            color: var(--brown);
+        }
+
+        .the-end {
+            text-align: center;
+            font-size: 2em;
+            color: var(--purple);
+            letter-spacing: 0.3em;
+        }
+
+        .illust-area {
+            text-align: center;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .page-num {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            font-size: 0.7em;
+            color: var(--brown);
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            {{slides}}
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            transition: 'fade',
+            backgroundTransition: 'fade',
+            width: 1280,
+            height: 720
+        });
+    </script>
+</body>
+</html>
