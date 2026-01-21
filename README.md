@@ -1,83 +1,79 @@
 # Slide Creator
 
-スライド・プレゼンテーション作成ツール集
+Marp を使用したスライド作成ワークフロー
 
-## 構成
+## ディレクトリ構成
 
 ```
 slide-creator/
-├── 2_marp_design_system/   # Marp ベースのスライド作成システム
-└── googleslides/           # Google Slides API 連携モジュール
+├── 1_input/      # 入力（テキスト、アイデア、ストーリー）
+├── 2_create/     # 作成（Marp Markdown スライド）
+├── 3_export/     # 出力（PDF, Google Slides）
+│   └── googleslides/   # Google Slides API 連携
+├── theme/        # CSS テーマ
+└── assets/       # アイコン・素材
 ```
 
-## 1. Marp Design System (`2_marp_design_system/`)
+## ワークフロー
 
-Markdown から PDF スライドを作成する手動ワークフロー。
+### 1. 入力 (`1_input/`)
 
-### 特徴
-- **Marp** (Markdown Presentation Ecosystem) を使用
-- 手書き風テーマ対応
-- CSS アイコン（Lucide, Phosphor）内蔵
-
-### 使い方
-```bash
-cd 2_marp_design_system
-# Markdown を作成
-vim 2_slides/my_presentation.md
-
-# PDF に変換
-npx @marp-team/marp-cli 2_slides/my_presentation.md -o 3_output/my_presentation.pdf --theme theme/handdrawn.css
+物語やアイデアをテキストファイルで保存:
+```
+1_input/my_story.txt
 ```
 
-詳細は `2_marp_design_system/CLAUDE.md` を参照。
+### 2. 作成 (`2_create/`)
 
+Marp 形式の Markdown でスライドを作成:
+```markdown
+---
+marp: true
+theme: handdrawn
 ---
 
-## 2. Google Slides Integration (`googleslides/`)
+# タイトル
 
-Google Slides API を使用してプレゼンテーションを作成・アップロードするモジュール。
-
-### セットアップ
-
-1. [Google Cloud Console](https://console.cloud.google.com/) でプロジェクト作成
-2. Google Slides API を有効化
-3. OAuth 2.0 クライアント ID を作成（デスクトップアプリ）
-4. `credentials.json` をダウンロードしてプロジェクトルートに配置
-
-```bash
-pip install -r googleslides/requirements.txt
+内容...
 ```
 
-### 使い方
+### 3. 出力 (`3_export/`)
 
+#### PDF に出力（Marp CLI）
+```bash
+npx @marp-team/marp-cli 2_create/my_slides.md -o 3_export/my_slides.pdf --theme theme/handdrawn.css
+```
+
+#### Google Slides に出力
 ```python
 from googleslides import PresentationBuilder
 
-# テンプレートを指定してビルダーを作成
-builder = PresentationBuilder(
-    template_name='business-proposal',
-    templates_dir='path/to/templates/slides'
-)
-
-# スライドを追加
-builder.add_title_slide("プロジェクト提案", "2025年度")
-builder.add_section_slide("01", "はじめに", "概要説明")
-builder.add_content_slide("背景", ["課題1", "課題2", "課題3"])
-
-# プレゼンテーションを作成
+builder = PresentationBuilder(template_name='default')
+builder.add_title_slide("タイトル")
 presentation_id, url = builder.build("My Presentation")
-print(f"作成完了: {url}")
 ```
 
-### サンプルスクリプト
+## テーマ
+
+`theme/` に CSS テーマファイルを配置:
+- `handdrawn.css` - 手書き風テーマ
+
+## 素材
+
+`assets/` にアイコン・画像を配置:
+- `icons/lucide/` - Lucide アイコン
+- `icons/phosphor/` - Phosphor アイコン
+
+## セットアップ
+
+### Marp CLI
 ```bash
-python -m googleslides.example
+npm install -g @marp-team/marp-cli
 ```
 
-詳細は `googleslides/README.md` を参照。
+### Google Slides（オプション）
+```bash
+pip install -r 3_export/googleslides/requirements.txt
+```
 
----
-
-## ライセンス
-
-MIT License
+詳細は `CLAUDE.md` を参照。
