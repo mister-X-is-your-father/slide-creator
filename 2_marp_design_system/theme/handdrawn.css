@@ -1,0 +1,615 @@
+/* ========================================
+   Marp Design System - Hand-drawn Theme
+   手書き風デザインテーマ
+   ======================================== */
+
+/* ----------------------------------------
+   フォント
+   ---------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Yomogi&family=Klee+One:wght@400;600&family=Hachi+Maru+Pop&family=Kaisei+Decol:wght@400;700&display=swap');
+
+/* ----------------------------------------
+   基本カラーパレット
+   ---------------------------------------- */
+:root {
+  /* 紙・背景 */
+  --paper-cream: #FFF8E7;
+  --paper-white: #FFFEF9;
+  --paper-aged: #F5E6D3;
+  --paper-notebook: #FAFAFA;
+
+  /* 手書きペン色 */
+  --ink-black: #2D2D2D;
+  --ink-blue: #4A6FA5;
+  --ink-brown: #5D4037;
+  --ink-gray: #6B7280;
+
+  /* アクセントカラー */
+  --accent-red: #E57373;
+  --accent-orange: #FFB74D;
+  --accent-yellow: #FFD54F;
+  --accent-green: #81C784;
+  --accent-blue: #64B5F6;
+  --accent-purple: #B39DDB;
+  --accent-pink: #F48FB1;
+
+  /* 影・効果 */
+  --shadow-soft: rgba(0, 0, 0, 0.08);
+  --shadow-medium: rgba(0, 0, 0, 0.12);
+}
+
+/* ----------------------------------------
+   スタイルバリエーション
+   ---------------------------------------- */
+
+/* === 絵本風 === */
+.style-picturebook {
+  background: var(--paper-cream);
+  font-family: "Zen Maru Gothic", sans-serif;
+  color: var(--ink-brown);
+}
+
+/* === ノート風 === */
+.style-notebook {
+  background:
+    repeating-linear-gradient(
+      transparent,
+      transparent 31px,
+      #E5E7EB 31px,
+      #E5E7EB 32px
+    ),
+    var(--paper-notebook);
+  font-family: "Yomogi", cursive;
+  color: var(--ink-black);
+}
+
+/* === スケッチ風 === */
+.style-sketch {
+  background: var(--paper-white);
+  font-family: "Klee One", sans-serif;
+  color: var(--ink-gray);
+}
+
+/* === コミック風 === */
+.style-comic {
+  background: var(--paper-white);
+  font-family: "Kaisei Decol", serif;
+  color: var(--ink-black);
+}
+
+/* === 日記風 === */
+.style-diary {
+  background:
+    linear-gradient(to right, #D4B896 0%, #D4B896 40px, transparent 40px),
+    var(--paper-aged);
+  font-family: "Hachi Maru Pop", cursive;
+  color: var(--ink-brown);
+  padding-left: 60px !important;
+}
+
+/* ----------------------------------------
+   手書き風ボーダー
+   ---------------------------------------- */
+
+/* 波線ボーダー */
+.border-wavy {
+  border: none;
+  position: relative;
+}
+
+.border-wavy::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath d='M0,2 Q5,0 10,2 T20,2' stroke='%235D4037' fill='none' stroke-width='2'/%3E%3C/svg%3E") repeat-x;
+}
+
+/* スケッチ風ボーダー */
+.border-sketch {
+  border: 2px solid var(--ink-black);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  box-shadow: 2px 2px 0 var(--shadow-soft);
+}
+
+/* マーカー風下線 */
+.underline-marker {
+  background: linear-gradient(transparent 60%, var(--accent-yellow) 60%);
+}
+
+.underline-marker-pink {
+  background: linear-gradient(transparent 60%, var(--accent-pink) 60%);
+}
+
+.underline-marker-blue {
+  background: linear-gradient(transparent 60%, var(--accent-blue) 60%);
+}
+
+.underline-marker-green {
+  background: linear-gradient(transparent 60%, var(--accent-green) 60%);
+}
+
+/* ----------------------------------------
+   吹き出し
+   ---------------------------------------- */
+
+/* 基本吹き出し */
+.bubble {
+  position: relative;
+  background: white;
+  border: 2px solid var(--ink-black);
+  border-radius: 20px;
+  padding: 15px 20px;
+  margin: 15px 0;
+  display: inline-block;
+  max-width: 80%;
+}
+
+.bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 30px;
+  border: 10px solid transparent;
+  border-top-color: var(--ink-black);
+}
+
+.bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 32px;
+  border: 8px solid transparent;
+  border-top-color: white;
+}
+
+/* 右向き吹き出し */
+.bubble-right {
+  text-align: right;
+}
+
+.bubble-right .bubble {
+  text-align: left;
+}
+
+.bubble-right .bubble::before {
+  left: auto;
+  right: 30px;
+}
+
+.bubble-right .bubble::after {
+  left: auto;
+  right: 32px;
+}
+
+/* もくもく吹き出し（思考） */
+.bubble-think {
+  background: white;
+  border: 2px solid var(--ink-gray);
+  border-radius: 50%;
+  padding: 20px 30px;
+  position: relative;
+}
+
+.bubble-think::before,
+.bubble-think::after {
+  content: '';
+  position: absolute;
+  background: white;
+  border: 2px solid var(--ink-gray);
+  border-radius: 50%;
+}
+
+.bubble-think::before {
+  width: 15px;
+  height: 15px;
+  bottom: -20px;
+  left: 40px;
+}
+
+.bubble-think::after {
+  width: 8px;
+  height: 8px;
+  bottom: -30px;
+  left: 35px;
+}
+
+/* 叫び吹き出し */
+.bubble-shout {
+  background: white;
+  border: 3px solid var(--ink-black);
+  padding: 15px 25px;
+  clip-path: polygon(
+    0% 20%, 5% 0%, 20% 15%, 35% 0%, 50% 10%, 65% 0%, 80% 15%, 95% 0%, 100% 20%,
+    95% 40%, 100% 60%, 95% 80%, 100% 100%, 80% 90%, 60% 100%, 40% 90%, 20% 100%, 0% 85%, 5% 60%, 0% 40%
+  );
+}
+
+/* ----------------------------------------
+   キャラクターアイコン
+   ---------------------------------------- */
+
+.character {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 8px;
+  border: 3px solid;
+}
+
+/* カラーバリエーション */
+.char-red {
+  background: #FFEBEE;
+  border-color: var(--accent-red);
+  color: var(--accent-red);
+}
+
+.char-blue {
+  background: #E3F2FD;
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+.char-green {
+  background: #E8F5E9;
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+}
+
+.char-orange {
+  background: #FFF3E0;
+  border-color: var(--accent-orange);
+  color: #E65100;
+}
+
+.char-purple {
+  background: #EDE7F6;
+  border-color: var(--accent-purple);
+  color: #7B1FA2;
+}
+
+.char-pink {
+  background: #FCE4EC;
+  border-color: var(--accent-pink);
+  color: #C2185B;
+}
+
+/* サイズバリエーション */
+.char-small { width: 40px; height: 40px; font-size: 16px; }
+.char-large { width: 80px; height: 80px; font-size: 32px; }
+.char-xlarge { width: 100px; height: 100px; font-size: 40px; }
+
+/* ----------------------------------------
+   手書き装飾
+   ---------------------------------------- */
+
+/* 囲み枠 */
+.box-hand {
+  border: 2px solid var(--ink-black);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  padding: 15px 20px;
+  background: white;
+}
+
+.box-double {
+  border: 3px double var(--ink-black);
+  border-radius: 5px;
+  padding: 15px 20px;
+}
+
+.box-dashed {
+  border: 2px dashed var(--ink-brown);
+  border-radius: 10px;
+  padding: 15px 20px;
+}
+
+/* 付箋風 */
+.sticky {
+  background: var(--accent-yellow);
+  padding: 15px 20px;
+  box-shadow: 3px 3px 0 var(--shadow-medium);
+  transform: rotate(-1deg);
+}
+
+.sticky-pink { background: #FFCDD2; }
+.sticky-blue { background: #BBDEFB; }
+.sticky-green { background: #C8E6C9; }
+
+/* メモ風 */
+.memo {
+  background: var(--paper-notebook);
+  border-left: 3px solid var(--accent-red);
+  padding: 15px 20px;
+  font-family: "Yomogi", cursive;
+  box-shadow: 2px 2px 5px var(--shadow-soft);
+}
+
+/* ----------------------------------------
+   区切り・装飾線
+   ---------------------------------------- */
+
+.divider-dots {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.5em;
+  letter-spacing: 0.5em;
+  color: var(--ink-gray);
+}
+
+.divider-wave {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.2em;
+  color: var(--ink-blue);
+}
+
+.divider-stars {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.5em;
+  color: var(--accent-yellow);
+}
+
+/* ----------------------------------------
+   シーン背景
+   ---------------------------------------- */
+
+/* 昼間 */
+.bg-day {
+  background: linear-gradient(180deg, #87CEEB 0%, #E0F7FA 100%);
+}
+
+/* 夕方 */
+.bg-sunset {
+  background: linear-gradient(180deg, #FFCC80 0%, #FFB74D 30%, #FF8A65 70%, #E57373 100%);
+}
+
+/* 夜 */
+.bg-night {
+  background: linear-gradient(180deg, #1A237E 0%, #283593 50%, #3949AB 100%);
+  color: white;
+}
+
+/* 森 */
+.bg-forest {
+  background: linear-gradient(180deg, #C8E6C9 0%, #A5D6A7 50%, #81C784 100%);
+}
+
+/* 海 */
+.bg-sea {
+  background: linear-gradient(180deg, #E3F2FD 0%, #BBDEFB 30%, #90CAF9 60%, #64B5F6 100%);
+}
+
+/* 雨 */
+.bg-rain {
+  background:
+    linear-gradient(180deg, #78909C 0%, #90A4AE 50%, #B0BEC5 100%);
+}
+
+/* 雪 */
+.bg-snow {
+  background: linear-gradient(180deg, #ECEFF1 0%, #CFD8DC 100%);
+}
+
+/* ----------------------------------------
+   表情アイコン（テキスト）
+   ---------------------------------------- */
+
+.face {
+  display: inline-block;
+  font-size: 1.5em;
+  margin: 0 5px;
+}
+
+/* ----------------------------------------
+   物語テキスト
+   ---------------------------------------- */
+
+.story-text {
+  font-size: 1.3em;
+  line-height: 2.2;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.story-text-left {
+  text-align: left;
+  padding: 0 40px;
+}
+
+/* ナレーション */
+.narration {
+  font-style: italic;
+  color: var(--ink-gray);
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* 章タイトル */
+.chapter {
+  text-align: center;
+  padding: 30px 0;
+}
+
+.chapter-number {
+  font-size: 0.9em;
+  color: var(--ink-gray);
+  letter-spacing: 0.3em;
+}
+
+.chapter-title {
+  font-size: 2em;
+  color: var(--ink-brown);
+  margin-top: 10px;
+}
+
+/* ----------------------------------------
+   ページ番号
+   ---------------------------------------- */
+
+.page-num {
+  position: absolute;
+  bottom: 30px;
+  right: 50px;
+  font-size: 0.8em;
+  color: var(--ink-gray);
+  opacity: 0.6;
+}
+
+.page-num-center {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ----------------------------------------
+   終わり・教訓
+   ---------------------------------------- */
+
+.the-end {
+  text-align: center;
+  font-size: 2em;
+  letter-spacing: 0.3em;
+  color: var(--ink-brown);
+  margin-top: 50px;
+}
+
+.moral-box {
+  background: rgba(255, 255, 255, 0.8);
+  border: 3px dashed var(--accent-orange);
+  border-radius: 20px;
+  padding: 20px 30px;
+  margin: 20px auto;
+  max-width: 600px;
+  text-align: center;
+}
+
+/* ----------------------------------------
+   イラストプレースホルダー
+   ---------------------------------------- */
+
+.illust-area {
+  text-align: center;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.illust-area-large {
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* テキストアイコン（絵文字代替） */
+.text-icon {
+  font-size: 3em;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.text-icon-small {
+  font-size: 2em;
+}
+
+/* ----------------------------------------
+   会話レイアウト
+   ---------------------------------------- */
+
+.dialogue-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+.dialogue-row-right {
+  flex-direction: row-reverse;
+}
+
+.dialogue-content {
+  background: white;
+  border: 2px solid var(--ink-black);
+  border-radius: 15px;
+  padding: 10px 15px;
+  max-width: 70%;
+}
+
+/* ----------------------------------------
+   グリッドレイアウト
+   ---------------------------------------- */
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+}
+
+.grid-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ----------------------------------------
+   アニメーション（プレゼン用）
+   ---------------------------------------- */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  75% { transform: rotate(3deg); }
+}
+
+.anim-float { animation: float 2s ease-in-out infinite; }
+.anim-shake { animation: shake 0.5s ease-in-out infinite; }
+
+/* ----------------------------------------
+   ユーティリティ
+   ---------------------------------------- */
+
+/* テキストカラー */
+.text-red { color: var(--accent-red); }
+.text-blue { color: var(--accent-blue); }
+.text-green { color: var(--accent-green); }
+.text-orange { color: var(--accent-orange); }
+.text-purple { color: var(--accent-purple); }
+.text-pink { color: var(--accent-pink); }
+.text-brown { color: var(--ink-brown); }
+.text-gray { color: var(--ink-gray); }
+
+/* 太字 */
+.bold { font-weight: 700; }
+
+/* テキスト揃え */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* マージン */
+.mt-1 { margin-top: 10px; }
+.mt-2 { margin-top: 20px; }
+.mt-3 { margin-top: 30px; }
+.mb-1 { margin-bottom: 10px; }
+.mb-2 { margin-bottom: 20px; }
+.mb-3 { margin-bottom: 30px; }
