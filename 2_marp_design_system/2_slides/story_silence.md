@@ -7,6 +7,7 @@ style: |
   /* ================================ */
   /* 絵本風デザイン                   */
   /* 物語：沈黙を聴くひと             */
+  /* シンプルアイコン版               */
   /* ================================ */
 
   @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Klee+One&display=swap');
@@ -27,7 +28,7 @@ style: |
 
   section {
     background: var(--paper);
-    font-family: "Klee One", "Zen Maru Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+    font-family: "Klee One", "Zen Maru Gothic", sans-serif;
     color: var(--ink);
     padding: 40px 60px;
     font-size: 24px;
@@ -37,48 +38,74 @@ style: |
     justify-content: center;
   }
 
-  /* 絵文字用 */
-  .illust, .illust-small, .char {
-    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  /* シンプルアイコン */
+  .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 8px;
   }
 
-  /* タイトル */
-  .book-cover {
-    text-align: center;
-    padding-top: 20px;
+  .icon-girl {
+    background: #FCE4EC;
+    border: 3px solid var(--rose);
+    color: var(--rose);
   }
 
-  .book-cover h1 {
-    font-size: 2.8em;
+  .icon-old {
+    background: #FFF8E1;
+    border: 3px solid var(--gold);
+    color: var(--gold);
+  }
+
+  .icon-boy {
+    background: #E3F2FD;
+    border: 3px solid var(--deep-blue);
     color: var(--deep-blue);
-    margin: 20px 0;
-    letter-spacing: 0.1em;
   }
 
-  .book-cover .subtitle {
-    font-size: 1.1em;
-    color: var(--ink-light);
-    margin-top: 10px;
+  .icon-sm {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
   }
 
-  /* イラスト */
+  /* イラストエリア */
   .illust {
-    text-align: center;
-    font-size: 3.5em;
-    margin: 15px 0;
-    line-height: 1.4;
-  }
-
-  .illust-small {
-    text-align: center;
-    font-size: 2.5em;
-    margin: 10px 0;
-  }
-
-  .illust-large {
-    text-align: center;
-    font-size: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
     margin: 20px 0;
+  }
+
+  .illust-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .illust-label {
+    font-size: 0.7em;
+    color: var(--ink-light);
+  }
+
+  /* シンボル */
+  .symbol {
+    font-size: 3em;
+    text-align: center;
+    margin: 15px 0;
+    color: var(--deep-blue);
+  }
+
+  .symbol-sm {
+    font-size: 2em;
   }
 
   /* 本文 */
@@ -87,14 +114,6 @@ style: |
     font-size: 1.2em;
     line-height: 2.3;
     max-width: 850px;
-    margin: 0 auto;
-  }
-
-  .story-left {
-    text-align: left;
-    font-size: 1.15em;
-    line-height: 2.2;
-    max-width: 800px;
     margin: 0 auto;
   }
 
@@ -113,14 +132,15 @@ style: |
     margin: 12px auto;
     max-width: 750px;
     box-shadow: 3px 3px 0 rgba(0,0,0,0.08);
-    text-align: center;
-    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 15px;
   }
 
-  .dialogue .char {
-    font-size: 1.8em;
-    margin-right: 12px;
-    vertical-align: middle;
+  .dialogue-text {
+    flex: 1;
+    text-align: left;
+    font-size: 1.05em;
   }
 
   .dialogue-thought {
@@ -143,8 +163,9 @@ style: |
     background: linear-gradient(180deg, #1A237E 0%, #283593 40%, #3949AB 100%);
     color: #E8EAF6;
   }
-  .bg-night .story, .bg-night .story-left { color: #E8EAF6; }
+  .bg-night .story { color: #E8EAF6; }
   .bg-night .dialogue { background: rgba(255,255,255,0.95); color: var(--ink); }
+  .bg-night .symbol { color: #FFD54F; }
 
   .bg-dawn {
     background: linear-gradient(180deg, #FFF3E0 0%, #FFE0B2 40%, #FFCC80 100%);
@@ -177,6 +198,25 @@ style: |
     letter-spacing: 0.2em;
   }
 
+  /* タイトル */
+  .book-cover {
+    text-align: center;
+    padding-top: 20px;
+  }
+
+  .book-cover h1 {
+    font-size: 2.8em;
+    color: var(--deep-blue);
+    margin: 20px 0;
+    letter-spacing: 0.1em;
+  }
+
+  .book-cover .subtitle {
+    font-size: 1.1em;
+    color: var(--ink-light);
+    margin-top: 10px;
+  }
+
   /* ページ番号 */
   .page {
     position: absolute;
@@ -206,7 +246,7 @@ style: |
   }
 
   .lesson-text {
-    font-size: 1.3em;
+    font-size: 1.2em;
     color: var(--ink);
     line-height: 1.8;
   }
@@ -220,14 +260,12 @@ style: |
     letter-spacing: 0.5em;
   }
 
-  /* 回想シーン */
-  .memory {
-    background: rgba(255,255,255,0.5);
-    border-left: 4px solid var(--lavender);
-    padding: 15px 25px;
-    margin: 15px auto;
-    max-width: 700px;
-    font-style: italic;
+  /* 装飾シンボル */
+  .deco {
+    text-align: center;
+    font-size: 2em;
+    color: var(--gold);
+    letter-spacing: 0.5em;
   }
 
 ---
@@ -235,7 +273,9 @@ style: |
 <!-- 表紙 -->
 <div class="book-cover">
 
-<div class="illust">🌙✨👂✨🌙</div>
+<div class="deco">* * *</div>
+
+<div class="symbol">((( ♪ )))</div>
 
 # 沈黙を聴くひと
 
@@ -243,7 +283,7 @@ style: |
 〜 言葉にならない声を聴く物語 〜
 </div>
 
-<div style="margin-top: 60px; font-size: 0.9em; color: var(--ink-light);">
+<div style="margin-top: 40px; font-size: 0.9em; color: var(--ink-light);">
 コミュニケーションの本質を知る、ある少女の旅
 </div>
 
@@ -256,7 +296,7 @@ style: |
 
 <div class="chapter">― 序章 ―</div>
 
-<div class="illust">🏔️🌲🏠🌲🏔️</div>
+<div class="symbol symbol-sm">▲ 🌲 ⌂ 🌲 ▲</div>
 
 <div class="story">
 山あいの小さな村に、<span class="blue">ユイ</span>という少女が暮らしていました。
@@ -273,7 +313,10 @@ style: |
 ---
 
 <!-- 2 -->
-<div class="illust-small">👧💭</div>
+<div class="illust">
+<div class="icon icon-girl">ユ</div>
+<div style="font-size: 2em; color: var(--lavender);">♪ ～ ？</div>
+</div>
 
 <div class="story">
 言葉にならない声。
@@ -292,7 +335,17 @@ style: |
 ---
 
 <!-- 3 -->
-<div class="illust">👦😊 → 👦💭😢</div>
+<div class="illust">
+<div class="illust-box">
+<div class="icon icon-sm" style="background:#E8F5E9; border-color:var(--forest); color:var(--forest);">A</div>
+<div class="illust-label">笑顔</div>
+</div>
+<div style="font-size: 1.5em;">→</div>
+<div class="illust-box">
+<div class="icon icon-sm" style="background:#E3F2FD; border-color:var(--deep-blue); color:var(--deep-blue);">...</div>
+<div class="illust-label">本音は悲しみ</div>
+</div>
+</div>
 
 <div class="story">
 笑っている人の心から、<span class="blue">悲しみ</span>が聞こえる。
@@ -309,7 +362,10 @@ style: |
 <!-- 4 -->
 <section class="bg-rain">
 
-<div class="illust">👧😢🌧️</div>
+<div class="illust">
+<div class="icon icon-girl">ユ</div>
+<div style="font-size: 2em; color: var(--ink-light);">／ ／ ／</div>
+</div>
 
 <div class="story">
 <span class="blue">「私は、みんなの悲しみを聞くためだけに生まれたの？」</span>
@@ -330,7 +386,7 @@ style: |
 
 <div class="chapter">― 第一章　出会い ―</div>
 
-<div class="illust">🌅🚶‍♀️🌾</div>
+<div class="symbol symbol-sm">☀ ～～～</div>
 
 <div class="story">
 ユイが12歳の春。
@@ -347,7 +403,9 @@ style: |
 ---
 
 <!-- 6 -->
-<div class="illust-small">🧓🚶</div>
+<div class="illust">
+<div class="icon icon-old">翁</div>
+</div>
 
 <div class="story">
 老人は村のはずれに小さな小屋を建て、
@@ -365,13 +423,13 @@ style: |
 
 <!-- 7 -->
 <div class="dialogue">
-<span class="char">👩‍🌾</span>
-「あの方に話を聴いてもらうと、なぜか心が軽くなるの」
+<div class="icon icon-sm" style="background:#E8F5E9; border-color:var(--forest); color:var(--forest);">村</div>
+<div class="dialogue-text">「あの方に話を聴いてもらうと、なぜか心が軽くなるの」</div>
 </div>
 
 <div class="dialogue">
-<span class="char">👨‍🔧</span>
-「不思議だ。何もアドバイスしないのに、元気が出る」
+<div class="icon icon-sm" style="background:#ECEFF1; border-color:#607D8B; color:#607D8B;">村</div>
+<div class="dialogue-text">「不思議だ。何もアドバイスしないのに、元気が出る」</div>
 </div>
 
 <div class="story">
@@ -383,7 +441,11 @@ style: |
 ---
 
 <!-- 8 -->
-<div class="illust">👧❓🧓</div>
+<div class="illust">
+<div class="icon icon-girl">ユ</div>
+<div style="font-size: 1.5em; color: var(--ink-light);">?</div>
+<div class="icon icon-old">翁</div>
+</div>
 
 <div class="story">
 ある日、ユイはこっそり老人の小屋を覗きました。
@@ -402,7 +464,10 @@ style: |
 <!-- 9 -->
 <section class="bg-forest">
 
-<div class="illust-small">👧👀✨</div>
+<div class="illust">
+<div class="icon icon-girl">ユ</div>
+<div style="font-size: 2em; color: var(--gold);">！</div>
+</div>
 
 <div class="story">
 その時、ユイは<span class="gold">信じられないもの</span>を見ました。
@@ -423,15 +488,19 @@ style: |
 ---
 
 <!-- 10 -->
-<div class="illust">👧🚪🧓</div>
+<div class="illust">
+<div class="icon icon-girl">ユ</div>
+<div style="font-size: 1.5em;">→</div>
+<div class="icon icon-old">翁</div>
+</div>
 
 <div class="story">
 ユイは思い切って、老人を訪ねました。
 </div>
 
 <div class="dialogue">
-<span class="char">👧</span>
-「あの...私、人の<span class="blue">心の声</span>が聞こえるんです。でも、それが苦しくて...」
+<div class="icon icon-sm icon-girl">ユ</div>
+<div class="dialogue-text">「あの...私、人の<span class="blue">心の声</span>が聞こえるんです。でも、それが苦しくて...」</div>
 </div>
 
 <div class="story">
@@ -443,7 +512,9 @@ style: |
 ---
 
 <!-- 11 -->
-<div class="illust-small">🧓😌</div>
+<div class="illust">
+<div class="icon icon-old">翁</div>
+</div>
 
 <div class="story">
 老人は驚きませんでした。
@@ -452,8 +523,8 @@ style: |
 </div>
 
 <div class="dialogue">
-<span class="char">🧓</span>
-「そうか。君も<span class="blue">『沈黙を聴くひと』</span>なんだね」
+<div class="icon icon-sm icon-old">翁</div>
+<div class="dialogue-text">「そうか。君も<span class="blue">『沈黙を聴くひと』</span>なんだね」</div>
 </div>
 
 <div class="page">- 11 -</div>
@@ -462,13 +533,13 @@ style: |
 
 <!-- 12 -->
 <div class="dialogue">
-<span class="char">👧</span>
-「沈黙を...聴く？」
+<div class="icon icon-sm icon-girl">ユ</div>
+<div class="dialogue-text">「沈黙を...聴く？」</div>
 </div>
 
 <div class="dialogue">
-<span class="char">🧓</span>
-「人は言葉を話す。でも、<span class="rose">本当に伝えたいこと</span>は、<br>言葉と言葉の<span class="gold">あいだ</span>にあるんだよ」
+<div class="icon icon-sm icon-old">翁</div>
+<div class="dialogue-text">「人は言葉を話す。でも、<span class="rose">本当に伝えたいこと</span>は、<br>言葉と言葉の<span class="gold">あいだ</span>にあるんだよ」</div>
 </div>
 
 <div class="story">
@@ -484,7 +555,7 @@ style: |
 
 <div class="chapter" style="color: #FFD54F;">― 第二章　修行 ―</div>
 
-<div class="illust">🌙🧓👧📖</div>
+<div class="symbol">☽ ✦ ✦ ✦</div>
 
 <div class="story">
 その日から、ユイは老人のもとで学び始めました。
@@ -502,18 +573,18 @@ style: |
 
 <!-- 14 -->
 <div class="dialogue">
-<span class="char">🧓</span>
-「ユイ、誰かの話を聴くとき、何を考えている？」
+<div class="icon icon-sm icon-old">翁</div>
+<div class="dialogue-text">「ユイ、誰かの話を聴くとき、何を考えている？」</div>
 </div>
 
 <div class="dialogue">
-<span class="char">👧</span>
-「えっと...『どうしてあげよう』とか、『何て言えばいいんだろう』とか...」
+<div class="icon icon-sm icon-girl">ユ</div>
+<div class="dialogue-text">「えっと...『どうしてあげよう』とか、『何て言えばいいんだろう』とか...」</div>
 </div>
 
 <div class="dialogue">
-<span class="char">🧓</span>
-「それが<span class="rose">最初の間違い</span>なんだよ」
+<div class="icon icon-sm icon-old">翁</div>
+<div class="dialogue-text">「それが<span class="rose">最初の間違い</span>なんだよ」</div>
 </div>
 
 <div class="page">- 14 -</div>
@@ -521,16 +592,18 @@ style: |
 ---
 
 <!-- 15 -->
-<div class="illust-small">🧓☝️</div>
-
-<div class="dialogue">
-<span class="char">🧓</span>
-「聴いている時に『次に何を言おう』と考えたら、<br>もう<span class="blue">聴いていない</span>んだ」
+<div class="illust">
+<div class="icon icon-old">翁</div>
 </div>
 
 <div class="dialogue">
-<span class="char">🧓</span>
-「相手の言葉を、<span class="gold">ただ受け止める</span>。<br>それだけでいいんだよ」
+<div class="icon icon-sm icon-old">翁</div>
+<div class="dialogue-text">「聴いている時に『次に何を言おう』と考えたら、<br>もう<span class="blue">聴いていない</span>んだ」</div>
+</div>
+
+<div class="dialogue">
+<div class="icon icon-sm icon-old">翁</div>
+<div class="dialogue-text">「相手の言葉を、<span class="gold">ただ受け止める</span>。<br>それだけでいいんだよ」</div>
 </div>
 
 <div class="page">- 15 -</div>
@@ -540,16 +613,19 @@ style: |
 <!-- 16 -->
 <section class="bg-forest">
 
-<div class="illust">👧🤔❓</div>
-
-<div class="dialogue">
-<span class="char">👧</span>
-「でも、何も言わないと、相手は不安になりませんか？」
+<div class="illust">
+<div class="icon icon-girl">ユ</div>
+<div style="font-size: 1.5em; color: var(--ink-light);">?</div>
 </div>
 
 <div class="dialogue">
-<span class="char">🧓</span>
-「言葉は必要ない。大切なのは...<br><span class="forest">『あなたの気持ち、ちゃんと聴こえているよ』</span><br>と、態度で伝えることなんだ」
+<div class="icon icon-sm icon-girl">ユ</div>
+<div class="dialogue-text">「でも、何も言わないと、相手は不安になりませんか？」</div>
+</div>
+
+<div class="dialogue">
+<div class="icon icon-sm icon-old">翁</div>
+<div class="dialogue-text">「言葉は必要ない。大切なのは...<br><span class="forest">『あなたの気持ち、ちゃんと聴こえているよ』</span><br>と、態度で伝えることなんだ」</div>
 </div>
 
 <div class="page">- 16 -</div>
@@ -559,7 +635,10 @@ style: |
 ---
 
 <!-- 17 -->
-<div class="illust">👧💭💡</div>
+<div class="illust">
+<div class="icon icon-girl">ユ</div>
+<div style="font-size: 2em; color: var(--gold);">！</div>
+</div>
 
 <div class="story">
 ユイは少しずつ理解し始めました。
@@ -575,13 +654,13 @@ style: |
 
 <!-- 18 -->
 <div class="dialogue">
-<span class="char">🧓</span>
-「人は誰かに話を聴いてもらうとき、<br>実は<span class="blue">自分自身の声を聴いている</span>んだよ」
+<div class="icon icon-sm icon-old">翁</div>
+<div class="dialogue-text">「人は誰かに話を聴いてもらうとき、<br>実は<span class="blue">自分自身の声を聴いている</span>んだよ」</div>
 </div>
 
 <div class="dialogue">
-<span class="char">🧓</span>
-「だから、聴き手は<span class="gold">鏡</span>になればいい。<br>相手が自分の心を映せる、静かな鏡に」
+<div class="icon icon-sm icon-old">翁</div>
+<div class="dialogue-text">「だから、聴き手は<span class="gold">鏡</span>になればいい。<br>相手が自分の心を映せる、静かな鏡に」</div>
 </div>
 
 <div class="page">- 18 -</div>
@@ -593,15 +672,15 @@ style: |
 
 <div class="chapter">― 第三章　試練 ―</div>
 
-<div class="illust">🌄👧🚶</div>
+<div class="symbol symbol-sm">◐ ～～～</div>
 
 <div class="story">
 一年が過ぎた頃、老人が言いました。
 </div>
 
 <div class="dialogue">
-<span class="char">🧓</span>
-「ユイ、そろそろ<span class="sunset">本当の修行</span>の時間だ」
+<div class="icon icon-sm icon-old">翁</div>
+<div class="dialogue-text">「ユイ、そろそろ<span class="sunset">本当の修行</span>の時間だ」</div>
 </div>
 
 <div class="page">- 19 -</div>
@@ -611,16 +690,20 @@ style: |
 ---
 
 <!-- 20 -->
-<div class="illust">🧓👉🏠💔</div>
-
-<div class="dialogue">
-<span class="char">🧓</span>
-「村の東に住むタケルという男の子がいる。<br>彼は一年前に母親を亡くしてから、<span class="blue">誰とも話さなくなった</span>」
+<div class="illust">
+<div class="icon icon-old">翁</div>
+<div style="font-size: 1.5em;">→</div>
+<div class="icon icon-boy">?</div>
 </div>
 
 <div class="dialogue">
-<span class="char">🧓</span>
-「彼の<span class="rose">沈黙の声</span>を聴いてごらん」
+<div class="icon icon-sm icon-old">翁</div>
+<div class="dialogue-text">「村の東に住むタケルという男の子がいる。<br>彼は一年前に母親を亡くしてから、<span class="blue">誰とも話さなくなった</span>」</div>
+</div>
+
+<div class="dialogue">
+<div class="icon icon-sm icon-old">翁</div>
+<div class="dialogue-text">「彼の<span class="rose">沈黙の声</span>を聴いてごらん」</div>
 </div>
 
 <div class="page">- 20 -</div>
@@ -630,7 +713,10 @@ style: |
 <!-- 21 -->
 <section class="bg-rain">
 
-<div class="illust">🏚️👦😶</div>
+<div class="illust">
+<div class="icon icon-boy">タ</div>
+<div style="font-size: 1.5em; color: var(--ink-light);">...</div>
+</div>
 
 <div class="story">
 タケルは13歳。
@@ -649,7 +735,11 @@ style: |
 ---
 
 <!-- 22 -->
-<div class="illust">👧🚶→👦</div>
+<div class="illust">
+<div class="icon icon-girl">ユ</div>
+<div style="font-size: 1.5em;">→</div>
+<div class="icon icon-boy">タ</div>
+</div>
 
 <div class="story">
 ユイはタケルの家を訪ねました。
@@ -670,7 +760,10 @@ style: |
 <!-- 23 -->
 <section class="bg-deep">
 
-<div class="illust" style="font-size: 3em;">👦🖤🖤🖤</div>
+<div class="illust">
+<div class="icon icon-boy" style="border-color: #424242; background: #212121;">タ</div>
+<div style="font-size: 1.5em; color: #FF5252;">■ ■ ■</div>
+</div>
 
 <div class="story">
 タケルの心から聞こえてきたのは、
@@ -689,7 +782,9 @@ style: |
 ---
 
 <!-- 24 -->
-<div class="illust-small">👧😢</div>
+<div class="illust">
+<div class="icon icon-girl">ユ</div>
+</div>
 
 <div class="story">
 ユイは泣きそうになりました。
@@ -706,7 +801,11 @@ style: |
 ---
 
 <!-- 25 -->
-<div class="illust">👧🤝👦</div>
+<div class="illust">
+<div class="icon icon-girl">ユ</div>
+<div style="font-size: 1.5em; color: var(--gold);">～</div>
+<div class="icon icon-boy">タ</div>
+</div>
 
 <div class="story">
 ユイは毎日、タケルのもとを訪れました。
@@ -725,15 +824,15 @@ style: |
 <!-- 26 -->
 <section class="bg-spring">
 
-<div class="illust">🌸👦...👧</div>
+<div class="symbol symbol-sm">❀ ～ ❀ ～ ❀</div>
 
 <div class="story">
 春が来た頃、タケルが初めて口を開きました。
 </div>
 
 <div class="dialogue">
-<span class="char">👦</span>
-「...なんで、毎日来るの？」
+<div class="icon icon-sm icon-boy">タ</div>
+<div class="dialogue-text">「...なんで、毎日来るの？」</div>
 </div>
 
 <div class="story">
@@ -741,8 +840,8 @@ style: |
 </div>
 
 <div class="dialogue">
-<span class="char">👧</span>
-「<span class="rose">あなたの声が、聴こえたから</span>」
+<div class="icon icon-sm icon-girl">ユ</div>
+<div class="dialogue-text">「<span class="rose">あなたの声が、聴こえたから</span>」</div>
 </div>
 
 <div class="page">- 26 -</div>
@@ -753,13 +852,13 @@ style: |
 
 <!-- 27 -->
 <div class="dialogue">
-<span class="char">👦</span>
-「...俺、何も話してないよ」
+<div class="icon icon-sm icon-boy">タ</div>
+<div class="dialogue-text">「...俺、何も話してないよ」</div>
 </div>
 
 <div class="dialogue">
-<span class="char">👧</span>
-「うん。でも、<span class="blue">声は聴こえた</span>。<br>すごく悲しくて、すごく寂しい声」
+<div class="icon icon-sm icon-girl">ユ</div>
+<div class="dialogue-text">「うん。でも、<span class="blue">声は聴こえた</span>。<br>すごく悲しくて、すごく寂しい声」</div>
 </div>
 
 <div class="story">
@@ -773,11 +872,15 @@ style: |
 ---
 
 <!-- 28 -->
-<div class="illust">👦😭👧🤗</div>
+<div class="illust">
+<div class="icon icon-boy" style="border-color: var(--soft-blue);">タ</div>
+<div style="font-size: 1.5em; color: var(--rose);">～</div>
+<div class="icon icon-girl">ユ</div>
+</div>
 
 <div class="dialogue">
-<span class="char">👦</span>
-「誰も...わかってくれないと思ってた...<br><span class="rose">僕の気持ちなんて、誰にも...</span>」
+<div class="icon icon-sm icon-boy">タ</div>
+<div class="dialogue-text">「誰も...わかってくれないと思ってた...<br><span class="rose">僕の気持ちなんて、誰にも...</span>」</div>
 </div>
 
 <div class="story">
@@ -799,7 +902,11 @@ style: |
 
 <div class="chapter">― 終章　継承 ―</div>
 
-<div class="illust">🌅🧓👧</div>
+<div class="illust">
+<div class="icon icon-old">翁</div>
+<div style="font-size: 1.5em; color: var(--gold);">～</div>
+<div class="icon icon-girl">ユ</div>
+</div>
 
 <div class="story">
 ユイが老人のもとに戻ると、
@@ -808,8 +915,8 @@ style: |
 </div>
 
 <div class="dialogue">
-<span class="char">🧓</span>
-「よくやったね、ユイ」
+<div class="icon icon-sm icon-old">翁</div>
+<div class="dialogue-text">「よくやったね、ユイ」</div>
 </div>
 
 <div class="page">- 29 -</div>
@@ -820,13 +927,13 @@ style: |
 
 <!-- 30 -->
 <div class="dialogue">
-<span class="char">👧</span>
-「おじいさん、私わかりました。<br>この力は<span class="rose">呪い</span>じゃなかった」
+<div class="icon icon-sm icon-girl">ユ</div>
+<div class="dialogue-text">「おじいさん、私わかりました。<br>この力は<span class="rose">呪い</span>じゃなかった」</div>
 </div>
 
 <div class="dialogue">
-<span class="char">👧</span>
-「<span class="gold">聴こえるからこそ、寄り添える</span>んですね。<br>言葉にできない苦しみを抱えた人に」
+<div class="icon icon-sm icon-girl">ユ</div>
+<div class="dialogue-text">「<span class="gold">聴こえるからこそ、寄り添える</span>んですね。<br>言葉にできない苦しみを抱えた人に」</div>
 </div>
 
 <div class="page">- 30 -</div>
@@ -834,16 +941,18 @@ style: |
 ---
 
 <!-- 31 -->
-<div class="illust-small">🧓😌✨</div>
-
-<div class="dialogue">
-<span class="char">🧓</span>
-「その通りだよ、ユイ。<br>人は<span class="blue">『聴いてもらえた』と感じた時</span>、<br>初めて自分の心と向き合える」
+<div class="illust">
+<div class="icon icon-old">翁</div>
 </div>
 
 <div class="dialogue">
-<span class="char">🧓</span>
-「君はこれから、たくさんの人の<br><span class="gold">沈黙を聴く</span>ことになるだろう」
+<div class="icon icon-sm icon-old">翁</div>
+<div class="dialogue-text">「その通りだよ、ユイ。<br>人は<span class="blue">『聴いてもらえた』と感じた時</span>、<br>初めて自分の心と向き合える」</div>
+</div>
+
+<div class="dialogue">
+<div class="icon icon-sm icon-old">翁</div>
+<div class="dialogue-text">「君はこれから、たくさんの人の<br><span class="gold">沈黙を聴く</span>ことになるだろう」</div>
 </div>
 
 <div class="page">- 31 -</div>
@@ -853,7 +962,11 @@ style: |
 <!-- 32 -->
 <section class="bg-forest">
 
-<div class="illust">🌲👧🚶→🌍</div>
+<div class="symbol symbol-sm">→ → →</div>
+
+<div class="illust">
+<div class="icon icon-girl">ユ</div>
+</div>
 
 <div class="story">
 数年後、ユイは村を出て旅に出ました。
@@ -870,7 +983,9 @@ style: |
 ---
 
 <!-- 33 -->
-<div class="illust">👧🌟</div>
+<div class="illust">
+<div class="icon icon-girl" style="width:80px; height:80px; font-size:32px;">ユ</div>
+</div>
 
 <div class="story">
 ユイは気づいていました。
@@ -890,7 +1005,7 @@ style: |
 
 <!-- 教訓ページ -->
 <div class="lesson-box">
-<div class="lesson-title">✨ この物語があなたに伝えたいこと ✨</div>
+<div class="lesson-title">* この物語があなたに伝えたいこと *</div>
 <div class="lesson-text">
 <span class="blue">相手の言葉の裏にある感情に気づくこと。</span>
 
@@ -908,7 +1023,7 @@ style: |
 <!-- 最終ページ -->
 <div class="the-end">おしまい</div>
 
-<div class="illust" style="margin-top: 30px;">👂✨💝✨👂</div>
+<div class="symbol" style="margin-top: 30px;">((( ♡ )))</div>
 
 <div style="text-align: center; margin-top: 40px; color: var(--ink-light); font-size: 0.95em;">
 今日、誰かの「沈黙」に気づけますように。
@@ -919,7 +1034,7 @@ style: |
 <!-- 裏表紙 -->
 <div class="book-cover" style="padding-top: 80px;">
 
-<div class="illust">📖✨🌙</div>
+<div class="deco">~ ~ ~</div>
 
 <div style="font-size: 1.3em; margin-top: 30px; color: var(--deep-blue);">
 聴くことは、愛することの始まり。
