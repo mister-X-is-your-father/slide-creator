@@ -18,6 +18,13 @@ PROJECT_ROOT = Path(__file__).parent.parent
 # テイスト設定ファイル
 STYLES_JSON = PROJECT_ROOT / "theme" / "styles.json"
 
+# コンポーネントセレクターをインポート
+try:
+    from component_selector import select_component as smart_select_component, suggest_components
+    SMART_SELECTOR_AVAILABLE = True
+except ImportError:
+    SMART_SELECTOR_AVAILABLE = False
+
 
 def load_styles() -> Dict:
     """styles.jsonを読み込む"""
@@ -120,7 +127,7 @@ def analyze_text_structure(content: str) -> List[Dict]:
 
 
 def select_component(section: Dict, style_config: Dict) -> str:
-    """セクションに適したコンポーネントを選択"""
+    """セクションに適したコンポーネントを選択（スマートセレクター対応）"""
     section_type = section.get("type", "")
     content = section.get("content", [])
     content_count = len(content)
@@ -133,6 +140,14 @@ def select_component(section: Dict, style_config: Dict) -> str:
     if section_type == "section" and content_count == 0:
         return "section-header"
 
+    # スマートセレクターが利用可能なら使用
+    if SMART_SELECTOR_AVAILABLE:
+        style_category = style_config.get("category", "business")
+        component, score = smart_select_component(section, style_category)
+        if score >= 0.5:  # 信頼度が高い場合はスマート選択を使用
+            return component
+
+    # フォールバック: 基本ルール
     # リスト系
     if section_type == "list" or any(c.get("type") == "list_item" for c in content):
         if content_count <= 3:
