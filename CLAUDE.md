@@ -1,38 +1,72 @@
-# 2_marp_design_system - デザインシステム付きMarp
+# Slide Creator - スライド作成システム
 
 ## 概要
 
-30種類以上の再利用可能CSSコンポーネント + カスタムコマンドによる自動化。
+テキスト/Markdownから高品質なスライドを生成するシステム。
+シナリオは別で用意 → **テキストをリライトせず、配置・デザインで魅せる**。
+
+## スキル（コマンド）
+
+| スキル | 機能 | 主なオプション |
+|--------|------|---------------|
+| `/create-slide` | テキスト → Marpスライド化 | `--style`, `--characters` |
+| `/build` | スライド → HTML/PDF出力 | `--format`, `--output` |
+| `/export-gslides` | → Google Slides | `--mode`, `--template` |
+| `/export-pptx` | → PowerPoint | `--template`, `--output` |
+
+詳細は `.claude/commands/` 内の各ファイルを参照。
+
+## テイスト（スタイル）
+
+階層構造で指定。詳細は `theme/styles.json` を参照。
+
+### business（ビジネス向け）
+`default` / `modern` / `corporate` / `minimal`
+
+### handdrawn（手書き風）
+`light` / `normal` / `sketchy` / `rough` / `crayon` / `pen` / `marker`
+
+Rough.js + roughViz による手書き風グラフィック。
+- ライブラリ: `assets/js/handdrawn.js`
+- デモ: `assets/js/handdrawn-example.html`
+
+### picturebook（絵本風）
+`warm` / `pastel` / `colorful` / `natural`
 
 ## ディレクトリ構成
 
 ```
-2_marp_design_system/
-├── 1_input/           # 下書き・アイデア・テンプレート
-├── 2_slides/          # Marp形式スライド
-├── 3_output/          # HTML/PDF出力
+slide-creator/
+├── 1_input/              # 入力テキスト・下書き
+├── 2_create/             # Marp形式スライド
+├── 3_export/             # 出力（HTML/PDF/PPTX）
 ├── theme/
-│   ├── theme.css      # メインテーマ（ビジネス用）
-│   ├── components.css # 再利用可能コンポーネント
-│   └── handdrawn.css  # 手書き風テーマ（物語用）
+│   ├── styles.json       # テイスト定義
+│   ├── theme.css         # 基本テーマ
+│   ├── components.css    # ビジネス向けコンポーネント
+│   ├── infographics.css  # グラフ・チャート
+│   ├── handdrawn.css     # 手書き風テーマ
+│   └── picturebook.css   # 絵本風テーマ
 ├── assets/
-│   ├── icons/         # アイコン素材（Lucide, Phosphor）
-│   ├── characters/    # キャラクター素材
-│   └── illustrations/ # イラスト素材
+│   ├── js/
+│   │   ├── handdrawn.js  # Rough.js ラッパー
+│   │   └── handdrawn-example.html
+│   ├── icons/            # アイコン素材
+│   ├── characters/       # キャラクター素材
+│   └── illustrations/    # イラスト素材
 ├── .claude/
-│   ├── commands/      # カスタムコマンド
-│   └── slide_rules.mdc # スライドルール
-└── CLAUDE.md          # 本ファイル
+│   └── commands/         # スキル定義
+└── CLAUDE.md
 ```
 
-## カスタムコマンド
+## 処理ルール
 
-- `/create-slide` - 1_input → 2_slides 変換
-- `/build-slide` - 2_slides → 3_output ビルド
+### テキスト処理
+- **リライトしない** - 原文をそのまま使用
+- **配置は最適化** - スライド分割、レイアウト調整
+- **図解は自動生成** - 内容に応じてコンポーネントを選択
 
-## スライドルール
-
-### 文字数制限
+### スライドルール
 - タイトル: 最大30文字
 - リード文: 最大2行
 - 箇条書き: 1項目25文字以内、最大5項目
@@ -46,107 +80,46 @@
 ボディ（根拠・詳細）
 ```
 
-## CSSコンポーネント使用例
+## コンポーネント一覧
 
-```markdown
----
-marp: true
-theme: custom
----
+### レイアウト
+`title-slide` / `section-header` / `two-column` / `three-column` / `four-column`
 
-<div class="title-slide">
+### 図解・フロー
+`flow-horizontal` / `flow-vertical` / `timeline` / `roadmap` / `gantt` / `org-chart` / `pyramid` / `funnel` / `cycle` / `matrix-2x2` / `swot`
 
-# プレゼンタイトル
-発表者名
+### グラフ・チャート（infographics.css）
+`pie-chart` / `donut-chart` / `bar-chart` / `radar-chart` / `skill-bars` / `animated-progress`
 
-</div>
+### 比較
+`before-after` / `comparison-table` / `feature-comparison` / `pros-cons` / `vs-comparison`
 
----
+### カード・ボックス
+`card` / `metric-card` / `data-card` / `flip-card` / `quote-box` / `highlight-box` / `callout`
 
-<div class="two-column">
-<div class="column">
+### ステップ・リスト
+`steps` / `process-steps` / `arrow-steps` / `numbered-list` / `checklist` / `icon-list`
 
-## 左カラム
-- 項目1
-- 項目2
+## Rough.js テイスト
 
-</div>
-<div class="column">
+`handdrawn.js` で使用可能なプリセット:
 
-## 右カラム
-- 項目A
-- 項目B
+| テイスト | roughness | 用途 |
+|----------|-----------|------|
+| light | 0.5 | ビジネスでも使える |
+| normal | 1.0 | 標準 |
+| sketchy | 2.0 | 絵本向け |
+| rough | 3.0 | 落書き風 |
+| crayon | 2.5 | 子供向け |
+| pen | 0.8 | 洗練された印象 |
+| marker | 1.2 | 強調 |
 
-</div>
-</div>
-```
-
-## 利用可能なコンポーネント
-
-| クラス名 | 用途 |
-|----------|------|
-| `.title-slide` | タイトルスライド |
-| `.section-header` | セクション区切り |
-| `.two-column` | 2カラムレイアウト |
-| `.three-column` | 3カラムレイアウト |
-| `.metric-card` | KPI/数値表示 |
-| `.code-block` | コードブロック強調 |
-| `.quote-box` | 引用ボックス |
-| `.comparison-table` | 比較表 |
-| `.timeline` | タイムライン |
-| `.highlight-box` | 強調ボックス |
-| `.image-caption` | 画像+キャプション |
-
-## 手書き風テーマ（handdrawn.css）
-
-物語・絵本スライド用の専用テーマ。
-
-### スタイルバリエーション
-
-| クラス | スタイル | 用途 |
-|--------|----------|------|
-| `.style-picturebook` | 絵本風 | 子供向け、温かい物語 |
-| `.style-notebook` | ノート風 | ホラー、日常系 |
-| `.style-sketch` | スケッチ風 | アート系 |
-| `.style-comic` | コミック風 | アクション、コメディ |
-| `.style-diary` | 日記風 | 回想、エモーショナル |
-
-### 手書き風コンポーネント
-
-| クラス | 用途 |
-|--------|------|
-| `.character` | キャラクターアイコン（丸枠） |
-| `.bubble` | 吹き出し |
-| `.bubble-think` | 思考吹き出し |
-| `.bubble-shout` | 叫び吹き出し |
-| `.story-text` | 物語本文 |
-| `.moral-box` | 教訓ボックス |
-| `.bg-day/sunset/night/forest/sea` | シーン背景 |
-
-### 物語テンプレート
-
-`1_input/template_story_handdrawn.md` を参照。
-
-## アセット
-
-### アイコン（assets/icons/）
-
-- **Lucide**: 1,600+ アイコン（MIT）
-- **Phosphor**: 1,200+ アイコン（MIT）
-
-### 使い方
-
-```html
-<!-- SVGを直接埋め込み -->
-<img src="assets/icons/lucide/icons/heart.svg" width="24">
-
-<!-- または CSS background -->
-.icon-heart {
-  background: url('assets/icons/lucide/icons/heart.svg');
-}
-```
+カラーパレット: `warm` / `cool` / `pastel` / `earth` / `mono` / `picturebook`
 
 ## 依存ツール
 
 - Marp CLI (`npm install -g @marp-team/marp-cli`)
-- VSCode + Marp for VS Code拡張機能
+- Rough.js（CDN: `https://unpkg.com/roughjs@latest/bundled/rough.cjs.js`）
+- roughViz（CDN: `https://unpkg.com/rough-viz@2.0.5`）
+- python-pptx（PowerPoint出力用）
+- Google Slides API（要認証設定）

@@ -1,0 +1,232 @@
+{
+  "styles": {
+    "business": {
+      "name": "ビジネス向け",
+      "description": "クリーンでプロフェッショナルなデザイン",
+      "css": ["theme.css", "components.css", "infographics.css"],
+      "variants": {
+        "default": {
+          "name": "標準",
+          "variables": {
+            "--primary": "#2563eb",
+            "--secondary": "#64748b",
+            "--accent": "#f59e0b"
+          }
+        },
+        "modern": {
+          "name": "モダン",
+          "variables": {
+            "--primary": "#0f172a",
+            "--secondary": "#475569",
+            "--accent": "#06b6d4"
+          }
+        },
+        "corporate": {
+          "name": "コーポレート",
+          "variables": {
+            "--primary": "#1e40af",
+            "--secondary": "#374151",
+            "--accent": "#dc2626"
+          }
+        },
+        "minimal": {
+          "name": "ミニマル",
+          "variables": {
+            "--primary": "#18181b",
+            "--secondary": "#71717a",
+            "--accent": "#a1a1aa"
+          }
+        }
+      }
+    },
+    "handdrawn": {
+      "name": "手書き風",
+      "description": "Rough.jsを使った温かみのあるデザイン",
+      "css": ["theme.css", "handdrawn.css", "infographics.css"],
+      "js": ["handdrawn.js"],
+      "variants": {
+        "light": {
+          "name": "軽い手書き",
+          "description": "ビジネスでも使える控えめな手書き感",
+          "roughness": 0.5,
+          "bowing": 0.5
+        },
+        "normal": {
+          "name": "標準",
+          "description": "バランスの取れた手書き風",
+          "roughness": 1,
+          "bowing": 1
+        },
+        "sketchy": {
+          "name": "スケッチ風",
+          "description": "絵本や教材に最適",
+          "roughness": 2,
+          "bowing": 1.5
+        },
+        "rough": {
+          "name": "荒い落書き",
+          "description": "カジュアルでラフな印象",
+          "roughness": 3,
+          "bowing": 2
+        },
+        "crayon": {
+          "name": "クレヨン風",
+          "description": "子供向け、温かみのある表現",
+          "roughness": 2.5,
+          "bowing": 1.8,
+          "strokeWidth": 3
+        },
+        "pen": {
+          "name": "ペン風",
+          "description": "細い線で洗練された印象",
+          "roughness": 0.8,
+          "bowing": 0.3,
+          "strokeWidth": 1
+        },
+        "marker": {
+          "name": "マーカー風",
+          "description": "強調したい時に",
+          "roughness": 1.2,
+          "bowing": 0.8,
+          "strokeWidth": 2
+        }
+      },
+      "palettes": {
+        "warm": ["#FF6B6B", "#FFE66D", "#4ECDC4", "#FF8C42", "#95E1D3"],
+        "cool": ["#74B9FF", "#A29BFE", "#81ECEC", "#6C5CE7", "#00CEC9"],
+        "pastel": ["#FFB3BA", "#FFDFBA", "#FFFFBA", "#BAFFC9", "#BAE1FF"],
+        "earth": ["#D4A574", "#8B7355", "#6B8E23", "#CD853F", "#DEB887"],
+        "mono": ["#2D3436", "#636E72", "#B2BEC3", "#DFE6E9", "#74B9FF"]
+      }
+    },
+    "picturebook": {
+      "name": "絵本風",
+      "description": "イラストと文章が調和する温かいデザイン",
+      "css": ["theme.css", "picturebook.css", "handdrawn.css"],
+      "js": ["handdrawn.js"],
+      "variants": {
+        "warm": {
+          "name": "暖色系",
+          "description": "優しく温かい雰囲気",
+          "palette": ["#FF9AA2", "#FFB7B2", "#FFDAC1", "#E2F0CB", "#B5EAD7"],
+          "background": "#FFF9F0"
+        },
+        "pastel": {
+          "name": "パステル",
+          "description": "柔らかく優しい色合い",
+          "palette": ["#FFB3BA", "#FFDFBA", "#FFFFBA", "#BAFFC9", "#BAE1FF"],
+          "background": "#FAFAFA"
+        },
+        "colorful": {
+          "name": "カラフル",
+          "description": "明るく楽しい印象",
+          "palette": ["#FF6B6B", "#4ECDC4", "#45B7D1", "#96CEB4", "#FFEAA7"],
+          "background": "#FFFFFF"
+        },
+        "natural": {
+          "name": "ナチュラル",
+          "description": "自然をテーマにした落ち着いた色",
+          "palette": ["#A8D5BA", "#D4A574", "#87CEEB", "#DEB887", "#98D8C8"],
+          "background": "#F5F5DC"
+        }
+      }
+    }
+  },
+  "components": {
+    "layouts": [
+      "title-slide",
+      "section-header",
+      "two-column",
+      "three-column",
+      "four-column"
+    ],
+    "diagrams": [
+      "flow-horizontal",
+      "flow-vertical",
+      "flow-branch",
+      "timeline",
+      "timeline-horizontal",
+      "roadmap",
+      "gantt",
+      "org-chart",
+      "hierarchy",
+      "pyramid",
+      "funnel",
+      "cycle",
+      "cycle-4",
+      "matrix-2x2",
+      "swot",
+      "layers",
+      "block-diagram",
+      "architecture-3tier"
+    ],
+    "metrics": [
+      "metric-card",
+      "metric-grid",
+      "big-number",
+      "progress-bar",
+      "progress-list",
+      "stats",
+      "counter-grid"
+    ],
+    "charts": [
+      "pie-chart",
+      "donut-chart",
+      "bar-chart",
+      "bar-chart-vertical",
+      "radar-chart",
+      "radar-pentagon",
+      "skill-bars"
+    ],
+    "comparison": [
+      "before-after",
+      "comparison-table",
+      "feature-comparison",
+      "pros-cons",
+      "vs-comparison"
+    ],
+    "cards": [
+      "card",
+      "card-grid",
+      "feature-card",
+      "data-card",
+      "data-card-grid",
+      "flip-card",
+      "flip-card-grid"
+    ],
+    "lists": [
+      "icon-list",
+      "checklist",
+      "numbered-list",
+      "bullet-points"
+    ],
+    "boxes": [
+      "quote-box",
+      "highlight-box",
+      "callout",
+      "code-block",
+      "terminal"
+    ],
+    "steps": [
+      "steps",
+      "steps-vertical",
+      "process-steps",
+      "arrow-steps",
+      "hex-steps"
+    ],
+    "other": [
+      "badge",
+      "tag-list",
+      "status",
+      "pricing",
+      "faq",
+      "big-quote",
+      "image-caption"
+    ]
+  },
+  "assets": {
+    "characters": "assets/characters/",
+    "illustrations": "assets/illustrations/",
+    "icons": "assets/icons/"
+  }
+}
