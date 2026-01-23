@@ -1,0 +1,862 @@
+/* ========================================
+   Infographics Components
+   グラフ・チャート・アニメーション付き図解
+   ======================================== */
+
+/* ----------------------------------------
+   1. 円グラフ (Pie/Donut Charts)
+   ---------------------------------------- */
+
+/* SVGベース円グラフ */
+.pie-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+.pie-chart .chart {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.pie-chart svg {
+  width: 150px;
+  height: 150px;
+  transform: rotate(-90deg);
+}
+
+.pie-chart svg circle {
+  fill: none;
+  stroke-width: 10;
+  stroke: var(--code-bg, #f3f3f3);
+  stroke-linecap: round;
+}
+
+.pie-chart svg circle.progress {
+  stroke-dasharray: 440;
+  stroke-dashoffset: 440;
+  animation: pieProgress 2s ease-out forwards;
+}
+
+/* カラーバリエーション */
+.pie-chart svg circle.progress.blue { stroke: #3b82f6; }
+.pie-chart svg circle.progress.green { stroke: #10b981; }
+.pie-chart svg circle.progress.orange { stroke: #f59e0b; }
+.pie-chart svg circle.progress.red { stroke: #ef4444; }
+.pie-chart svg circle.progress.purple { stroke: #8b5cf6; }
+
+/* パーセント表示 */
+.pie-chart .percent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  font-weight: bold;
+  color: var(--primary, #2563eb);
+}
+
+.pie-chart .percent span {
+  font-size: 0.5em;
+}
+
+.pie-chart .label {
+  text-align: center;
+  margin-top: 0.5em;
+  color: var(--secondary, #64748b);
+}
+
+/* アニメーション（パーセントに応じてoffset調整） */
+@keyframes pieProgress {
+  from { stroke-dashoffset: 440; }
+  to { stroke-dashoffset: var(--offset, 0); }
+}
+
+/* 使用例のカスタムプロパティ */
+.pie-chart .p-90 { --offset: 44; }   /* 90% */
+.pie-chart .p-80 { --offset: 88; }   /* 80% */
+.pie-chart .p-70 { --offset: 132; }  /* 70% */
+.pie-chart .p-60 { --offset: 176; }  /* 60% */
+.pie-chart .p-50 { --offset: 220; }  /* 50% */
+.pie-chart .p-40 { --offset: 264; }  /* 40% */
+.pie-chart .p-30 { --offset: 308; }  /* 30% */
+.pie-chart .p-20 { --offset: 352; }  /* 20% */
+.pie-chart .p-10 { --offset: 396; }  /* 10% */
+
+/* 複数円グラフ横並び */
+.pie-chart-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1.5em;
+}
+
+/* ドーナツチャート */
+.donut-chart {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.donut-chart svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.donut-chart svg circle {
+  fill: none;
+  stroke-width: 30;
+  cx: 100;
+  cy: 100;
+  r: 70;
+}
+
+.donut-chart .center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.donut-chart .center-text .value {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+/* ----------------------------------------
+   2. 棒グラフ (Bar Charts)
+   ---------------------------------------- */
+
+/* 横棒グラフ */
+.bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.bar-chart .bar-item {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.bar-chart .bar-label {
+  width: 100px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.bar-chart .bar-track {
+  flex: 1;
+  height: 30px;
+  background: var(--code-bg, #f1f5f9);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar-chart .bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary, #2563eb) 0%, #3b82f6 100%);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.85em;
+  animation: barGrow 1.5s ease-out forwards;
+  transform-origin: left;
+}
+
+@keyframes barGrow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* カラーバリエーション */
+.bar-chart .bar-fill.blue { background: linear-gradient(90deg, #1e40af, #3b82f6); }
+.bar-chart .bar-fill.green { background: linear-gradient(90deg, #047857, #10b981); }
+.bar-chart .bar-fill.orange { background: linear-gradient(90deg, #d97706, #f59e0b); }
+.bar-chart .bar-fill.red { background: linear-gradient(90deg, #b91c1c, #ef4444); }
+.bar-chart .bar-fill.purple { background: linear-gradient(90deg, #6d28d9, #8b5cf6); }
+
+/* 縦棒グラフ */
+.bar-chart-vertical {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 300px;
+  padding: 1em;
+  border-bottom: 2px solid var(--border, #e2e8f0);
+}
+
+.bar-chart-vertical .bar-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.bar-chart-vertical .bar {
+  width: 50px;
+  background: var(--primary, #2563eb);
+  border-radius: 4px 4px 0 0;
+  animation: barGrowVertical 1.5s ease-out forwards;
+  transform-origin: bottom;
+}
+
+@keyframes barGrowVertical {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+.bar-chart-vertical .bar-value {
+  font-weight: bold;
+  color: var(--primary, #2563eb);
+}
+
+.bar-chart-vertical .bar-name {
+  font-size: 0.85em;
+  color: var(--secondary, #64748b);
+}
+
+/* ----------------------------------------
+   3. レーダーチャート (Radar Charts)
+   ---------------------------------------- */
+
+/* 三角形レーダー */
+.radar-chart {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  margin: 0 auto;
+}
+
+.radar-chart .radar-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    transparent 0deg 120deg
+  );
+  border: 2px solid var(--border, #e2e8f0);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.radar-chart .radar-value {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(59, 130, 246, 0.4);
+  clip-path: polygon(50% 17%, 2% 100%, 77% 87%);
+  animation: radarGrow 2s ease-out forwards;
+}
+
+@keyframes radarGrow {
+  from { clip-path: polygon(50% 50%, 50% 50%, 50% 50%); }
+  to { clip-path: polygon(50% 17%, 2% 100%, 77% 87%); }
+}
+
+/* 五角形レーダー */
+.radar-pentagon {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  margin: 0 auto;
+}
+
+.radar-pentagon .radar-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--border, #e2e8f0);
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+
+.radar-pentagon .radar-value {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(59, 130, 246, 0.4);
+  animation: pentagonGrow 2s ease-out forwards;
+}
+
+@keyframes pentagonGrow {
+  from { clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%, 50% 50%); }
+  to { clip-path: polygon(50% 6%, 93% 40%, 63% 69%, 27% 89%, 13% 41%); }
+}
+
+.radar-pentagon .radar-labels {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.radar-pentagon .label {
+  position: absolute;
+  font-size: 0.85em;
+  font-weight: bold;
+}
+
+.radar-pentagon .label-top { top: -20px; left: 50%; transform: translateX(-50%); }
+.radar-pentagon .label-tr { top: 30%; right: -40px; }
+.radar-pentagon .label-br { bottom: 10%; right: -30px; }
+.radar-pentagon .label-bl { bottom: 10%; left: -30px; }
+.radar-pentagon .label-tl { top: 30%; left: -40px; }
+
+/* ----------------------------------------
+   4. アニメーション付きプログレス
+   ---------------------------------------- */
+
+/* アニメーション進捗バー */
+.animated-progress {
+  margin: 1em 0;
+}
+
+.animated-progress .progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5em;
+}
+
+.animated-progress .progress-track {
+  height: 20px;
+  background: var(--code-bg, #f1f5f9);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.animated-progress .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary, #2563eb), #60a5fa);
+  border-radius: 10px;
+  animation: progressFill 2s ease-out forwards;
+  position: relative;
+}
+
+.animated-progress .progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.3),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes progressFill {
+  from { width: 0; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* 円形プログレス */
+.circular-progress {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.circular-progress svg {
+  transform: rotate(-90deg);
+}
+
+.circular-progress circle {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+}
+
+.circular-progress .track {
+  stroke: var(--code-bg, #f1f5f9);
+}
+
+.circular-progress .fill {
+  stroke: var(--primary, #2563eb);
+  stroke-dasharray: 339.292;
+  stroke-dashoffset: 339.292;
+  animation: circularFill 2s ease-out forwards;
+}
+
+@keyframes circularFill {
+  to { stroke-dashoffset: var(--offset, 0); }
+}
+
+.circular-progress .value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/* ----------------------------------------
+   5. フリップカード
+   ---------------------------------------- */
+
+.flip-card {
+  perspective: 1000px;
+  width: 250px;
+  height: 300px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5em;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.flip-card-front {
+  background: white;
+  border: 2px solid var(--border, #e2e8f0);
+}
+
+.flip-card-back {
+  background: var(--primary, #2563eb);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.flip-card-back h3 {
+  color: white;
+  border: none;
+}
+
+/* フリップカードグリッド */
+.flip-card-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+  flex-wrap: wrap;
+}
+
+/* ----------------------------------------
+   6. タイムライン（交互配置）
+   ---------------------------------------- */
+
+.timeline-alternating {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline-alternating::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background: var(--primary, #2563eb);
+}
+
+.timeline-alternating .event {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 30px;
+  position: relative;
+  margin-bottom: 2em;
+  width: 50%;
+}
+
+.timeline-alternating .event:nth-child(even) {
+  justify-content: flex-start;
+  padding-left: 30px;
+  padding-right: 0;
+  margin-left: 50%;
+}
+
+.timeline-alternating .event::after {
+  content: '';
+  position: absolute;
+  right: -8px;
+  top: 15px;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border: 4px solid var(--primary, #2563eb);
+  border-radius: 50%;
+}
+
+.timeline-alternating .event:nth-child(even)::after {
+  left: -8px;
+  right: auto;
+}
+
+.timeline-alternating .event-content {
+  background: white;
+  border: 2px solid var(--border, #e2e8f0);
+  border-radius: 8px;
+  padding: 1em;
+  max-width: 300px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.timeline-alternating .event-date {
+  font-weight: bold;
+  color: var(--primary, #2563eb);
+  margin-bottom: 0.5em;
+}
+
+/* ----------------------------------------
+   7. 比較表（チェックマーク付き）
+   ---------------------------------------- */
+
+.feature-comparison {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.feature-comparison th,
+.feature-comparison td {
+  padding: 1em;
+  text-align: center;
+  border-bottom: 1px solid var(--border, #e2e8f0);
+}
+
+.feature-comparison th {
+  background: var(--primary, #2563eb);
+  color: white;
+}
+
+.feature-comparison th:first-child {
+  background: var(--secondary, #64748b);
+  text-align: left;
+}
+
+.feature-comparison td:first-child {
+  text-align: left;
+  font-weight: bold;
+}
+
+.feature-comparison tr:nth-child(even) {
+  background: var(--code-bg, #f8fafc);
+}
+
+.feature-comparison .check {
+  color: #10b981;
+  font-size: 1.3em;
+}
+
+.feature-comparison .check::before {
+  content: '\2713';
+}
+
+.feature-comparison .cross {
+  color: #ef4444;
+  font-size: 1.3em;
+}
+
+.feature-comparison .cross::before {
+  content: '\2717';
+}
+
+.feature-comparison .partial {
+  color: #f59e0b;
+  font-size: 1.3em;
+}
+
+.feature-comparison .partial::before {
+  content: '\25cf';
+}
+
+/* ----------------------------------------
+   8. カウントアップ数値
+   ---------------------------------------- */
+
+.counter-grid {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  gap: 2em;
+}
+
+.counter-item {
+  padding: 1.5em;
+}
+
+.counter-item .counter-value {
+  font-size: 4em;
+  font-weight: bold;
+  color: var(--primary, #2563eb);
+  line-height: 1;
+}
+
+.counter-item .counter-suffix {
+  font-size: 1.5em;
+  color: var(--secondary, #64748b);
+}
+
+.counter-item .counter-label {
+  margin-top: 0.5em;
+  color: var(--text, #334155);
+  font-size: 1.1em;
+}
+
+/* ----------------------------------------
+   9. アイコン付きステータス
+   ---------------------------------------- */
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1em;
+}
+
+.status-card {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding: 1em;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid var(--border, #e2e8f0);
+}
+
+.status-card .status-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+}
+
+.status-card.success .status-icon {
+  background: #d1fae5;
+  color: #10b981;
+}
+
+.status-card.warning .status-icon {
+  background: #fef3c7;
+  color: #f59e0b;
+}
+
+.status-card.error .status-icon {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.status-card.info .status-icon {
+  background: #dbeafe;
+  color: #3b82f6;
+}
+
+.status-card .status-text .title {
+  font-weight: bold;
+}
+
+.status-card .status-text .description {
+  font-size: 0.85em;
+  color: var(--secondary, #64748b);
+}
+
+/* ----------------------------------------
+   10. インフォグラフィック・ステップ
+   ---------------------------------------- */
+
+/* 矢印付きステップ */
+.arrow-steps {
+  display: flex;
+  justify-content: center;
+}
+
+.arrow-steps .step {
+  position: relative;
+  padding: 1em 2em 1em 3em;
+  background: var(--primary, #2563eb);
+  color: white;
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%, 20px 50%);
+  margin-left: -10px;
+}
+
+.arrow-steps .step:first-child {
+  margin-left: 0;
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%);
+  padding-left: 2em;
+}
+
+.arrow-steps .step:last-child {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 20px 50%);
+}
+
+.arrow-steps .step:nth-child(2) { background: #3b82f6; }
+.arrow-steps .step:nth-child(3) { background: #60a5fa; }
+.arrow-steps .step:nth-child(4) { background: #93c5fd; color: #1e40af; }
+
+/* 六角形ステップ */
+.hex-steps {
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.hex-steps .hex {
+  width: 100px;
+  height: 115px;
+  background: var(--primary, #2563eb);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 1em;
+}
+
+.hex-steps .hex .number {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.hex-steps .hex .label {
+  font-size: 0.75em;
+}
+
+/* ----------------------------------------
+   11. スキルバー
+   ---------------------------------------- */
+
+.skill-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.skill-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.skill-bar .skill-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.skill-bar .skill-name {
+  font-weight: bold;
+}
+
+.skill-bar .skill-percent {
+  color: var(--primary, #2563eb);
+  font-weight: bold;
+}
+
+.skill-bar .skill-track {
+  height: 12px;
+  background: var(--code-bg, #f1f5f9);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.skill-bar .skill-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary, #2563eb), #60a5fa);
+  border-radius: 6px;
+  animation: skillFill 1.5s ease-out forwards;
+}
+
+@keyframes skillFill {
+  from { width: 0; }
+}
+
+/* ----------------------------------------
+   12. データカード
+   ---------------------------------------- */
+
+.data-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5em;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-left: 4px solid var(--primary, #2563eb);
+}
+
+.data-card .data-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.data-card .data-title {
+  font-weight: bold;
+  color: var(--secondary, #64748b);
+}
+
+.data-card .data-trend {
+  font-size: 0.85em;
+  padding: 0.25em 0.5em;
+  border-radius: 4px;
+}
+
+.data-card .data-trend.up {
+  background: #d1fae5;
+  color: #10b981;
+}
+
+.data-card .data-trend.down {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.data-card .data-value {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: var(--text, #1e293b);
+}
+
+.data-card .data-meta {
+  font-size: 0.85em;
+  color: var(--secondary, #64748b);
+  margin-top: 0.5em;
+}
+
+/* データカードグリッド */
+.data-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5em;
+}

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handdrawn.js デモ - テイスト選択</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: #fafafa;
+    }
+    h1 { text-align: center; color: #333; }
+    h2 { color: #555; border-bottom: 2px solid #ddd; padding-bottom: 0.5rem; }
+
+    /* コントロールパネル */
+    .controls {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .control-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .control-group label { font-weight: bold; color: #666; }
+    .control-group select {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    /* デモエリア */
+    .demo-area {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .demo-box {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .demo-box h3 { margin-top: 0; color: #333; }
+
+    /* Canvas/SVG */
+    canvas, svg { display: block; margin: 0 auto; background: #fff; }
+
+    /* チャートコンテナ */
+    .chart-container { min-height: 300px; }
+
+    /* テイスト説明 */
+    .style-info {
+      background: #f0f0f0;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+    .style-info code {
+      background: #e0e0e0;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Handdrawn.js デモ</h1>
+  <p style="text-align: center; color: #666;">テイストを選んで手書き風グラフィックを描画</p>
+
+  <!-- コントロールパネル -->
+  <div class="controls">
+    <div class="control-group">
+      <label>テイスト (Style)</label>
+      <select id="styleSelect">
+        <option value="light">Light - 軽い手書き（ビジネス向け）</option>
+        <option value="normal" selected>Normal - 標準的な手書き</option>
+        <option value="sketchy">Sketchy - しっかり手書き（絵本向け）</option>
+        <option value="rough">Rough - 荒い手書き（落書き風）</option>
+        <option value="crayon">Crayon - クレヨン風</option>
+        <option value="pen">Pen - ペン風（細い線）</option>
+        <option value="marker">Marker - マーカー風</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label>カラーパレット</label>
+      <select id="paletteSelect">
+        <option value="warm" selected>Warm - 暖色系</option>
+        <option value="cool">Cool - 寒色系</option>
+        <option value="pastel">Pastel - パステル</option>
+        <option value="earth">Earth - アース</option>
+        <option value="mono">Mono - モノクロ</option>
+        <option value="picturebook">Picturebook - 絵本風</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label>&nbsp;</label>
+      <button onclick="redrawAll()" style="padding: 0.5rem 2rem; font-size: 1rem; cursor: pointer; background: #4ECDC4; color: white; border: none; border-radius: 8px;">
+        再描画
+      </button>
+    </div>
+  </div>
+
+  <!-- デモエリア -->
+  <h2>基本図形 (Rough.js)</h2>
+  <div class="demo-area">
+    <div class="demo-box">
+      <h3>四角形・円・楕円</h3>
+      <canvas id="canvas1" width="280" height="200"></canvas>
+    </div>
+    <div class="demo-box">
+      <h3>線・矢印・多角形</h3>
+      <canvas id="canvas2" width="280" height="200"></canvas>
+    </div>
+    <div class="demo-box">
+      <h3>フローチャート風</h3>
+      <canvas id="canvas3" width="280" height="200"></canvas>
+    </div>
+  </div>
+
+  <h2>チャート (roughViz)</h2>
+  <div class="demo-area">
+    <div class="demo-box">
+      <h3>棒グラフ</h3>
+      <div id="barChart" class="chart-container"></div>
+    </div>
+    <div class="demo-box">
+      <h3>円グラフ</h3>
+      <div id="pieChart" class="chart-container"></div>
+    </div>
+    <div class="demo-box">
+      <h3>ドーナツグラフ</h3>
+      <div id="donutChart" class="chart-container"></div>
+    </div>
+  </div>
+
+  <!-- テイスト情報 -->
+  <div class="style-info" id="styleInfo">
+    <strong>現在のテイスト:</strong> <code>normal</code><br>
+    roughness: 1, bowing: 1, fillStyle: hachure
+  </div>
+
+  <!-- ライブラリ読み込み -->
+  <script src="https://unpkg.com/roughjs@latest/bundled/rough.cjs.js"></script>
+  <script src="https://unpkg.com/rough-viz@2.0.5"></script>
+  <script src="handdrawn.js"></script>
+
+  <script>
+    // 現在の設定
+    let currentStyle = 'normal';
+    let currentPalette = 'warm';
+
+    // テイスト情報を更新
+    function updateStyleInfo() {
+      const styleData = HANDDRAWN_STYLES[currentStyle];
+      document.getElementById('styleInfo').innerHTML = `
+        <strong>現在のテイスト:</strong> <code>${currentStyle}</code><br>
+        roughness: ${styleData.roughness},
+        bowing: ${styleData.bowing},
+        fillStyle: ${styleData.fillStyle},
+        strokeWidth: ${styleData.strokeWidth}
+      `;
+    }
+
+    // Canvas をクリア
+    function clearCanvas(id) {
+      const canvas = document.getElementById(id);
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    // 基本図形を描画
+    function drawShapes() {
+      const colors = COLOR_PALETTES[currentPalette];
+
+      // Canvas 1: 四角形・円・楕円
+      clearCanvas('canvas1');
+      const hd1 = new Handdrawn({ style: currentStyle, palette: currentPalette });
+      hd1.canvas(document.getElementById('canvas1'));
+      hd1.rectangle(20, 20, 80, 60, { fill: colors[0], stroke: '#333' });
+      hd1.circle(180, 50, 60, { fill: colors[1], stroke: '#333' });
+      hd1.ellipse(80, 150, 100, 50, { fill: colors[2], stroke: '#333' });
+
+      // Canvas 2: 線・矢印・多角形
+      clearCanvas('canvas2');
+      const hd2 = new Handdrawn({ style: currentStyle, palette: currentPalette });
+      hd2.canvas(document.getElementById('canvas2'));
+      hd2.line(20, 30, 120, 30, { stroke: colors[0] });
+      hd2.arrow(20, 70, 120, 70, { stroke: colors[1] });
+      hd2.polygon([[150, 20], [260, 20], [260, 80], [200, 100], [150, 80]], { fill: colors[2], stroke: '#333' });
+      hd2.polygon([[60, 120], [120, 180], [60, 180]], { fill: colors[3], stroke: '#333' });
+
+      // Canvas 3: フローチャート風
+      clearCanvas('canvas3');
+      const hd3 = new Handdrawn({ style: currentStyle, palette: currentPalette });
+      hd3.canvas(document.getElementById('canvas3'));
+      hd3.box(20, 20, 70, 40, { fill: colors[0], stroke: '#333' });
+      hd3.box(110, 20, 70, 40, { fill: colors[1], stroke: '#333' });
+      hd3.box(200, 20, 70, 40, { fill: colors[2], stroke: '#333' });
+      hd3.arrow(90, 40, 110, 40, { stroke: '#333' });
+      hd3.arrow(180, 40, 200, 40, { stroke: '#333' });
+      // 下段
+      hd3.circle(55, 140, 50, { fill: colors[3], stroke: '#333' });
+      hd3.rectangle(110, 115, 70, 50, { fill: colors[4], stroke: '#333' });
+      hd3.arrow(55, 100, 55, 115, { stroke: '#333' });
+      hd3.arrow(145, 100, 145, 115, { stroke: '#333' });
+    }
+
+    // チャートを描画
+    function drawCharts() {
+      // 既存のチャートをクリア
+      document.getElementById('barChart').innerHTML = '';
+      document.getElementById('pieChart').innerHTML = '';
+      document.getElementById('donutChart').innerHTML = '';
+
+      const chart = new HanddrawnChart({ style: currentStyle, palette: currentPalette });
+
+      // 棒グラフ
+      chart.bar('#barChart', {
+        labels: ['1月', '2月', '3月', '4月', '5月'],
+        values: [65, 80, 45, 90, 70]
+      }, {
+        title: '月別売上',
+        width: 280,
+        height: 280
+      });
+
+      // 円グラフ
+      chart.pie('#pieChart', {
+        labels: ['製品A', '製品B', '製品C', '製品D'],
+        values: [30, 25, 25, 20]
+      }, {
+        title: '製品シェア',
+        width: 280,
+        height: 280
+      });
+
+      // ドーナツグラフ
+      chart.donut('#donutChart', {
+        labels: ['完了', '進行中', '未着手'],
+        values: [60, 25, 15]
+      }, {
+        title: 'タスク進捗',
+        width: 280,
+        height: 280
+      });
+    }
+
+    // 全て再描画
+    function redrawAll() {
+      currentStyle = document.getElementById('styleSelect').value;
+      currentPalette = document.getElementById('paletteSelect').value;
+      updateStyleInfo();
+      drawShapes();
+      drawCharts();
+    }
+
+    // 初期描画
+    window.addEventListener('load', () => {
+      redrawAll();
+    });
+
+    // セレクト変更時も再描画
+    document.getElementById('styleSelect').addEventListener('change', redrawAll);
+    document.getElementById('paletteSelect').addEventListener('change', redrawAll);
+  </script>
+</body>
+</html>
